@@ -12,7 +12,7 @@ export default function FAQ() {
     <section id="faq" className="py-24">
       <div className="max-w-3xl mx-auto px-6">
         <h2
-          className="text-3xl md:text-4xl font-extralight tracking-tight mb-16"
+          className="text-3xl md:text-4xl font-extralight tracking-tight mb-16 animate-on-scroll"
           style={{ color: "var(--text-primary)" }}
         >
           {t("heading")}
@@ -22,16 +22,16 @@ export default function FAQ() {
           {items.map((item, i) => (
             <div
               key={i}
-              className="border-b"
+              className="border-b animate-on-scroll"
               style={{ borderColor: "var(--border-card)" }}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between py-5 text-left"
+                className="group w-full flex items-center justify-between py-5 text-left transition-colors duration-200"
               >
                 <span
-                  className="text-sm font-medium pr-4"
-                  style={{ color: "var(--text-primary)" }}
+                  className="text-sm font-medium pr-4 transition-colors duration-200"
+                  style={{ color: openIndex === i ? "var(--accent-text)" : "var(--text-primary)" }}
                 >
                   {item.question}
                 </span>
@@ -46,7 +46,7 @@ export default function FAQ() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className={`shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}
-                  style={{ color: "var(--text-secondary)" }}
+                  style={{ color: openIndex === i ? "var(--accent-text)" : "var(--text-secondary)" }}
                 >
                   <polyline points="6 9 12 15 18 9" />
                 </svg>

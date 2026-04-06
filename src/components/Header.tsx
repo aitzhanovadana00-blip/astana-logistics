@@ -2,6 +2,7 @@ import { useTranslations, useLocale } from "next-intl";
 import ThemeToggle from "./ThemeToggle";
 import LangSwitcher from "./LangSwitcher";
 import BurgerMenu from "./BurgerMenu";
+import Logo from "./Logo";
 
 export default function Header() {
   const t = useTranslations("nav");
@@ -23,7 +24,8 @@ export default function Header() {
       }}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between relative">
-        <a href={`/${locale}`} className="font-light text-sm tracking-[4px]" style={{ color: "var(--text-primary)" }}>
+        <a href={`/${locale}`} className="flex items-center gap-2.5 font-light text-sm tracking-[2px]" style={{ color: "var(--text-primary)" }}>
+          <Logo size={48} />
           ASTANA LOGISTICS
         </a>
 

@@ -10,26 +10,125 @@
   --accent-start: #0A2463;
   --accent-end: #3E92CC;
   --accent-text: #0A2463;
+  --accent-glow: rgba(62,146,204,0.15);
   --border-card: #E2E8F0;
   --border-nav: #E2E8F0;
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  --shadow-card-hover: 0 4px 16px rgba(10,36,99,0.1), 0 8px 32px rgba(62,146,204,0.08);
 }
 
 .dark {
-  --bg: #0A0A0F;
-  --bg-card: rgba(62,146,204,0.06);
+  --bg: #06060C;
+  --bg-card: rgba(62,146,204,0.05);
   --text-primary: #F0F4F8;
-  --text-secondary: #64748B;
-  --accent-start: #0A2463;
-  --accent-end: #3E92CC;
-  --accent-text: #3E92CC;
-  --border-card: rgba(62,146,204,0.1);
-  --border-nav: rgba(62,146,204,0.1);
-  --shadow-card: none;
+  --text-secondary: #94A3B8;
+  --accent-start: #1A3A7A;
+  --accent-end: #5BB0E5;
+  --accent-text: #5BB0E5;
+  --accent-glow: rgba(62,146,204,0.2);
+  --border-card: rgba(62,146,204,0.12);
+  --border-nav: rgba(62,146,204,0.12);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-card-hover: 0 4px 16px rgba(62,146,204,0.15), 0 8px 32px rgba(62,146,204,0.1);
 }
 
 body {
   background-color: var(--bg);
   color: var(--text-primary);
   font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Hero star pulse */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Scroll-triggered animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  animation: fade-in-up 0.7s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+.animate-on-scroll-delay-1 {
+  opacity: 0;
+  animation: fade-in-up 0.7s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+  animation-delay: 0.1s;
+}
+
+.animate-on-scroll-delay-2 {
+  opacity: 0;
+  animation: fade-in-up 0.7s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+  animation-delay: 0.2s;
+}
+
+/* Floating label styles */
+/* Card hover effects via CSS */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  box-shadow: var(--shadow-card-hover) !important;
+  border-color: var(--accent-end) !important;
+}
+
+/* Floating label styles */
+.floating-field {
+  position: relative;
+}
+
+.floating-field input,
+.floating-field textarea {
+  padding-top: 1.25rem;
+  padding-bottom: 0.5rem;
+}
+
+.floating-field label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.floating-field textarea ~ label {
+  top: 1.25rem;
+  transform: none;
+}
+
+.floating-field input:focus ~ label,
+.floating-field input:not(:placeholder-shown) ~ label,
+.floating-field textarea:focus ~ label,
+.floating-field textarea:not(:placeholder-shown) ~ label {
+  top: 0.4rem;
+  transform: none;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-text);
 }

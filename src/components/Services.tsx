@@ -14,38 +14,43 @@ export default function Services() {
     <section id="services" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <h2
-          className="text-3xl md:text-4xl font-extralight tracking-tight mb-16"
+          className="text-3xl md:text-4xl font-extralight tracking-tight mb-16 animate-on-scroll"
           style={{ color: "var(--text-primary)" }}
         >
           {t("heading")}
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {services.map((service) => (
+          {services.map((service, i) => (
             <div
               key={service.key}
-              className="rounded-xl p-8 border transition-colors"
+              className={`group card-hover rounded-xl p-8 border backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 animate-on-scroll-delay-${i}`}
               style={{
                 backgroundColor: "var(--bg-card)",
                 borderColor: "var(--border-card)",
                 boxShadow: "var(--shadow-card)",
               }}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="mb-6"
-                style={{ color: "var(--accent-text)" }}
+              <div
+                className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+                style={{
+                  background: "linear-gradient(135deg, var(--accent-start), var(--accent-end))",
+                }}
               >
-                <path d={service.icon} />
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d={service.icon} />
+                </svg>
+              </div>
 
               <h3
                 className="text-lg font-medium mb-3"
@@ -64,10 +69,10 @@ export default function Services() {
               {service.key === "outsourcing" && (
                 <a
                   href={`/${locale}/logistics`}
-                  className="inline-block mt-4 text-sm font-medium transition-opacity hover:opacity-70"
+                  className="inline-flex items-center gap-1 mt-4 text-sm font-medium transition-all hover:gap-2"
                   style={{ color: "var(--accent-text)" }}
                 >
-                  {t("outsourcing.link")} →
+                  {t("outsourcing.link")} <span className="transition-transform">→</span>
                 </a>
               )}
             </div>
