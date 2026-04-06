@@ -1,11 +1,17 @@
-import { useTranslations } from "next-intl";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import Advantages from "@/components/Advantages";
 
 export default function Home() {
-  const t = useTranslations("hero");
-
   return (
-    <main>
-      <h1>{t("title1")}</h1>
-    </main>
+    <>
+      <Header />
+      <main className="pt-16">
+        <Hero />
+        <Services />
+        <Advantages />
+      </main>
+    </>
   );
 }
