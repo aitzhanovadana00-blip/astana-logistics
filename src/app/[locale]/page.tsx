@@ -5,6 +5,7 @@ import Advantages from "@/components/Advantages";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import Contacts from "@/components/Contacts";
+import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <main className="pt-16">
         <Hero />
         <Services />
+        <Gallery />
         <Advantages />
         <ContactForm />
         <FAQ />

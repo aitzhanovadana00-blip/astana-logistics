@@ -8,16 +8,16 @@ export default function Hero() {
       {/* Full-bleed background photo */}
       <div className="absolute inset-0">
         <img
-          src="/hero-truck.jpg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          src="/team-group.jpg"
+          alt="Команда Astana Logistics"
+          className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
         />
         {/* Dark overlay for text readability */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.7) 100%)",
+              "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.75) 100%)",
           }}
         />
         {/* Side vignette */}
@@ -25,7 +25,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%)",
+              "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)",
           }}
         />
       </div>
@@ -37,15 +37,14 @@ export default function Hero() {
           fontSize: "clamp(100px, 16vw, 240px)",
           fontWeight: 900,
           letterSpacing: "-0.02em",
-          color: "rgba(255,255,255,0.06)",
+          color: "rgba(255,255,255,0.05)",
           lineHeight: 1,
-          fontFamily: "system-ui, sans-serif",
         }}
       >
         LOGISTICS
       </div>
 
-      {/* Main headline - centered over photo */}
+      {/* Main headline */}
       <div className="absolute top-[18%] md:top-[20%] left-0 right-0 z-20 text-center px-6">
         <h1
           className="text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] font-black tracking-[-0.02em] leading-[0.9] uppercase"
