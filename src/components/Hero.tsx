@@ -5,75 +5,90 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-end overflow-hidden">
-      {/* Full-bleed background photo */}
-      <div className="absolute inset-0">
+      {/* LAYER 1: Background photo */}
+      <div className="absolute inset-0 z-0">
         <img
-          src="/team-group.jpg"
-          alt="Команда Astana Logistics"
+          src="/hero-ford-bg.jpg"
+          alt=""
           className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
         />
-        {/* Dark overlay for text readability */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.75) 100%)",
+              "linear-gradient(180deg, rgba(10,15,30,0.45) 0%, rgba(10,15,30,0.15) 40%, rgba(10,15,30,0.25) 55%, rgba(10,15,30,0.8) 100%)",
           }}
         />
-        {/* Side vignette */}
-        <div
-          className="absolute inset-0"
+      </div>
+
+      {/* LAYER 2: Outlined watermark text "LOGISTICS" */}
+      <div className="absolute top-[5%] md:top-[7%] left-0 right-0 z-[1] flex justify-center pointer-events-none select-none overflow-hidden">
+        <span
           style={{
-            background:
-              "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%)",
+            fontSize: "clamp(100px, 18vw, 280px)",
+            fontWeight: 900,
+            letterSpacing: "-0.02em",
+            lineHeight: 0.85,
+            color: "transparent",
+            WebkitTextStroke: "3px rgba(255,255,255,0.2)",
+            fontFamily: "system-ui, -apple-system, sans-serif",
           }}
-        />
+        >
+          LOGISTICS
+        </span>
       </div>
 
-      {/* Giant watermark text */}
-      <div
-        className="absolute top-[8%] left-1/2 -translate-x-1/2 whitespace-nowrap select-none pointer-events-none z-[1]"
-        style={{
-          fontSize: "clamp(100px, 16vw, 240px)",
-          fontWeight: 900,
-          letterSpacing: "-0.02em",
-          color: "rgba(255,255,255,0.05)",
-          lineHeight: 1,
-        }}
-      >
-        LOGISTICS
-      </div>
-
-      {/* Main headline */}
-      <div className="absolute top-[18%] md:top-[20%] left-0 right-0 z-20 text-center px-6">
+      {/* LAYER 2b: Main headline — positioned at top, BEHIND truck */}
+      <div className="absolute top-[14%] md:top-[16%] left-0 right-0 z-[1] text-center px-6 pointer-events-none">
         <h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] font-black tracking-[-0.02em] leading-[0.9] uppercase"
           style={{
-            color: "#FFFFFF",
-            textShadow: "0 4px 40px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4)",
+            fontSize: "clamp(2.8rem, 8vw, 7rem)",
+            fontWeight: 400,
+            letterSpacing: "0.07em",
+            lineHeight: 0.95,
+            color: "#1a1a1a",
+            fontFamily: "'QueenOfClubs', 'Impact', 'Arial Narrow', sans-serif",
+            textTransform: "uppercase",
           }}
         >
           {t("heroLine1")}
         </h1>
         <p
-          className="mt-3 text-xl sm:text-2xl md:text-3xl font-light tracking-[0.2em] uppercase"
+          className="mt-1"
           style={{
-            color: "rgba(255,255,255,0.85)",
-            textShadow: "0 2px 20px rgba(0,0,0,0.5)",
+            fontSize: "clamp(0.85rem, 2vw, 1.6rem)",
+            fontWeight: 300,
+            letterSpacing: "0.25em",
+            color: "#333333",
+            fontFamily: "'Helvetica Neue', Arial, sans-serif",
+            textTransform: "uppercase",
           }}
         >
           {t("heroLine2")}
         </p>
       </div>
 
-      {/* Bottom-left CTA block */}
-      <div className="relative z-30 max-w-6xl mx-auto w-full px-6 pb-16 md:pb-20">
-        <div className="max-w-md">
+      {/* LAYER 3: Truck cutout — LARGE, overlapping text */}
+      <div className="absolute inset-0 z-[2] pointer-events-none flex items-end justify-center">
+        <img
+          src="/hero-ford-cutout.png"
+          alt="Грузовик"
+          className="w-[250%] sm:w-[230%] md:w-[210%] lg:w-[200%] h-auto object-contain"
+          style={{
+            marginBottom: "-28%",
+            filter: "drop-shadow(0 10px 40px rgba(0,0,0,0.4))",
+          }}
+        />
+      </div>
+
+      {/* LAYER 4: Bottom-left CTA */}
+      <div className="relative z-[3] max-w-6xl mx-auto w-full px-6 pb-14 md:pb-18">
+        <div className="max-w-md pointer-events-auto">
           <p
-            className="text-lg sm:text-xl md:text-2xl font-light leading-snug mb-6"
+            className="text-base sm:text-lg md:text-xl font-light leading-snug mb-5"
             style={{
-              color: "rgba(255,255,255,0.95)",
-              textShadow: "0 2px 16px rgba(0,0,0,0.7)",
+              color: "rgba(255,255,255,0.9)",
+              textShadow: "0 2px 12px rgba(0,0,0,0.7)",
             }}
           >
             {t("description")}
@@ -110,7 +125,7 @@ export default function Hero() {
 
       {/* Bottom accent line */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-1 z-30"
+        className="absolute bottom-0 left-0 right-0 h-1 z-[4]"
         style={{ background: "#E8A317" }}
       />
     </section>
