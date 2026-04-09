@@ -6,51 +6,42 @@ export default function Footer() {
   const locale = useLocale();
 
   return (
-    <footer
-      className="border-t py-12"
-      style={{ borderColor: "var(--border-nav)" }}
-    >
-      <div className="max-w-6xl mx-auto px-6">
+    <footer style={{ backgroundColor: "#0A2463" }}>
+      <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <p
-              className="font-light text-sm tracking-[4px] mb-3"
-              style={{ color: "var(--text-primary)" }}
-            >
-              ASTANA LOGISTICS
+            <p className="text-sm font-bold tracking-tight text-white mb-3">
+              ASTANA{" "}
+              <span className="font-light" style={{ color: "#3E92CC" }}>LOGISTICS</span>
             </p>
-            <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-xs leading-relaxed text-white/50">
               {t("description")}
             </p>
           </div>
 
           <div>
             <nav className="flex flex-col gap-2">
-              <a href="#services" className="text-xs" style={{ color: "var(--text-secondary)" }}>{nav("services")}</a>
-              <a href={`/${locale}/logistics`} className="text-xs" style={{ color: "var(--text-secondary)" }}>{nav("logistics")}</a>
-              <a href="#faq" className="text-xs" style={{ color: "var(--text-secondary)" }}>{nav("faq")}</a>
-              <a href="#contacts" className="text-xs" style={{ color: "var(--text-secondary)" }}>{nav("contacts")}</a>
+              <a href="#services" className="text-xs text-white/50 hover:text-white/80 transition-colors">{nav("services")}</a>
+              <a href={`/${locale}/logistics`} className="text-xs text-white/50 hover:text-white/80 transition-colors">{nav("logistics")}</a>
+              <a href="#faq" className="text-xs text-white/50 hover:text-white/80 transition-colors">{nav("faq")}</a>
+              <a href="#contacts" className="text-xs text-white/50 hover:text-white/80 transition-colors">{nav("contacts")}</a>
             </nav>
           </div>
 
           <div>
-            <a href="tel:+77753373130" className="block text-xs mb-1" style={{ color: "var(--text-secondary)" }}>+7 775 337 3130</a>
-            <a href="https://wa.me/77753373130" className="block text-xs mb-1" style={{ color: "var(--text-secondary)" }}>WhatsApp</a>
-            <a href="https://t.me/+77753373130" className="block text-xs" style={{ color: "var(--text-secondary)" }}>Telegram</a>
+            <a href="tel:+77753373130" className="block text-xs text-white/50 hover:text-white/80 transition-colors mb-1">+7 775 337 3130</a>
+            <a href="https://wa.me/77753373130" className="block text-xs text-white/50 hover:text-white/80 transition-colors mb-1">WhatsApp</a>
+            <a href="https://t.me/+77753373130" className="block text-xs text-white/50 hover:text-white/80 transition-colors">Telegram</a>
           </div>
         </div>
 
-        <div
-          className="mt-8 pt-8 border-t flex flex-col md:flex-row justify-between gap-4"
-          style={{ borderColor: "var(--border-nav)" }}
-        >
-          <p className="text-xs" style={{ color: "var(--text-secondary)" }}>
+        <div className="mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4">
+          <p className="text-xs text-white/30">
             {t("legal")}
           </p>
           <a
             href={`/${locale}/privacy`}
-            className="text-xs transition-opacity hover:opacity-70"
-            style={{ color: "var(--text-secondary)" }}
+            className="text-xs text-white/30 hover:text-white/50 transition-colors"
           >
             {t("privacy")}
           </a>

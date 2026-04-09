@@ -1,40 +1,39 @@
 import { useTranslations } from "next-intl";
 
 const photos = [
-  { src: "/team-trucks.jpg", alt: "team-trucks", span: "md:col-span-2 md:row-span-2" },
-  { src: "/fleet.jpg", alt: "fleet", span: "md:col-span-2" },
-  { src: "/worker-loading.jpg", alt: "worker-loading", span: "" },
-  { src: "/warehouse.jpg", alt: "warehouse", span: "md:col-span-2" },
-  { src: "/team-small.jpg", alt: "team-small", span: "" },
-  { src: "/drivers.jpg", alt: "drivers", span: "md:col-span-2" },
+  { src: "/team-trucks.jpg", alt: "team-trucks" },
+  { src: "/fleet.jpg", alt: "fleet" },
+  { src: "/worker-loading.jpg", alt: "worker-loading" },
+  { src: "/warehouse.jpg", alt: "warehouse" },
+  { src: "/team-small.jpg", alt: "team-small" },
+  { src: "/drivers.jpg", alt: "drivers" },
 ];
 
 export default function Gallery() {
   const t = useTranslations("gallery");
 
   return (
-    <section className="py-24">
+    <section className="py-20" style={{ background: "var(--bg-card)" }}>
       <div className="max-w-6xl mx-auto px-6">
-        <h2
-          className="text-3xl md:text-4xl font-extralight tracking-tight mb-4 animate-on-scroll"
-          style={{ color: "var(--text-primary)" }}
-        >
-          {t("heading")}
-        </h2>
-        <p
-          className="text-sm mb-12 animate-on-scroll"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          {t("subheading")}
-        </p>
+        <div className="text-center mb-12">
+          <h2
+            className="text-2xl md:text-3xl font-bold tracking-tight animate-on-scroll"
+            style={{ color: "var(--accent-start)" }}
+          >
+            {t("heading")}
+          </h2>
+          <p className="text-sm mt-2 animate-on-scroll" style={{ color: "var(--text-secondary)" }}>
+            {t("subheading")}
+          </p>
+        </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {photos.map((photo) => (
             <div
               key={photo.src}
-              className={`group relative overflow-hidden rounded-xl ${photo.span} animate-on-scroll`}
+              className="group relative overflow-hidden rounded-lg animate-on-scroll"
             >
-              <div className="aspect-[4/3] w-full h-full">
+              <div className="aspect-[4/3]">
                 <img
                   src={photo.src}
                   alt={t(photo.alt)}
@@ -42,8 +41,7 @@ export default function Gallery() {
                   loading="lazy"
                 />
               </div>
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300" />
             </div>
           ))}
         </div>

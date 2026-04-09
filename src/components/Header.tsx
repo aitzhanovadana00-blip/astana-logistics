@@ -17,16 +17,26 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b"
+      className="fixed top-0 left-0 right-0 z-50 border-b"
       style={{
-        backgroundColor: "color-mix(in srgb, var(--bg) 80%, transparent)",
+        backgroundColor: "var(--bg-card)",
         borderColor: "var(--border-nav)",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between relative">
-        <a href={`/${locale}`} className="flex items-center gap-2.5 font-light text-sm tracking-[2px]" style={{ color: "var(--text-primary)" }}>
-          <Logo size={48} />
-          ASTANA LOGISTICS
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a
+          href={`/${locale}`}
+          className="flex items-center gap-2.5"
+          style={{ color: "var(--text-primary)" }}
+        >
+          <Logo size={40} />
+          <span className="text-sm font-bold tracking-tight" style={{ color: "var(--accent-start)" }}>
+            ASTANA{" "}
+            <span className="font-light" style={{ color: "var(--accent-end)" }}>
+              LOGISTICS
+            </span>
+          </span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -34,7 +44,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs tracking-wider uppercase transition-colors hover:opacity-70"
+              className="text-xs tracking-wider uppercase font-medium transition-colors hover:opacity-70"
               style={{ color: "var(--text-secondary)" }}
             >
               {link.label}

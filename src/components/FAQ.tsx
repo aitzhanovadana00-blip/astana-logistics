@@ -9,40 +9,45 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24">
-      <div className="max-w-3xl mx-auto px-6">
-        <h2
-          className="text-3xl md:text-4xl font-extralight tracking-tight mb-16 animate-on-scroll"
-          style={{ color: "var(--text-primary)" }}
-        >
-          {t("heading")}
-        </h2>
+    <section id="faq" className="py-20" style={{ background: "var(--bg)" }}>
+      <div className="max-w-xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2
+            className="text-2xl md:text-3xl font-bold tracking-tight animate-on-scroll"
+            style={{ color: "var(--accent-start)" }}
+          >
+            {t("heading")}
+          </h2>
+        </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
           {items.map((item, i) => (
             <div
               key={i}
-              className="border-b animate-on-scroll"
-              style={{ borderColor: "var(--border-card)" }}
+              className="rounded-lg border overflow-hidden animate-on-scroll"
+              style={{
+                backgroundColor: "var(--bg-card)",
+                borderColor: openIndex === i ? "var(--accent-end)" : "var(--border-card)",
+              }}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="group w-full flex items-center justify-between py-5 text-left transition-colors duration-200"
+                className="w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-200"
               >
                 <span
-                  className="text-sm font-medium pr-4 transition-colors duration-200"
+                  className="text-sm font-semibold pr-4"
                   style={{ color: openIndex === i ? "var(--accent-text)" : "var(--text-primary)" }}
                 >
                   {item.question}
                 </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
+                  width="16"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className={`shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}
@@ -53,7 +58,7 @@ export default function FAQ() {
               </button>
 
               <div
-                className={`overflow-hidden transition-all duration-300 ${openIndex === i ? "max-h-96 pb-5" : "max-h-0"}`}
+                className={`overflow-hidden transition-all duration-300 ${openIndex === i ? "max-h-96 pb-4 px-5" : "max-h-0"}`}
               >
                 <p
                   className="text-sm leading-relaxed"

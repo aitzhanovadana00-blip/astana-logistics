@@ -21,11 +21,8 @@ export default function ContactForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
-
     if (!validate(form)) return;
-
     setStatus("loading");
-
     const res = await fetch("/api/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -36,7 +33,6 @@ export default function ContactForm() {
         locale,
       }),
     });
-
     setStatus(res.ok ? "success" : "error");
   }
 
@@ -48,20 +44,22 @@ export default function ContactForm() {
   });
 
   return (
-    <section id="form" className="py-24">
-      <div className="max-w-2xl mx-auto px-6">
-        <h2
-          className="text-3xl md:text-4xl font-extralight tracking-tight mb-12 animate-on-scroll"
-          style={{ color: "var(--text-primary)" }}
-        >
-          {t("heading")}
-        </h2>
+    <section id="form" className="py-20" style={{ background: "var(--bg-card)" }}>
+      <div className="max-w-md mx-auto px-6">
+        <div className="text-center mb-10">
+          <h2
+            className="text-2xl md:text-3xl font-bold tracking-tight animate-on-scroll"
+            style={{ color: "var(--accent-start)" }}
+          >
+            {t("heading")}
+          </h2>
+        </div>
 
         {status === "success" ? (
           <div
             className="rounded-xl p-8 border text-center animate-on-scroll"
             style={{
-              backgroundColor: "var(--bg-card)",
+              backgroundColor: "var(--bg)",
               borderColor: "var(--accent-end)",
               boxShadow: "0 4px 16px var(--accent-glow)",
             }}
@@ -72,63 +70,71 @@ export default function ContactForm() {
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5 animate-on-scroll" noValidate>
-            <div className="floating-field">
-              <input
-                name="name"
-                placeholder=" "
-                className="w-full px-4 py-3 rounded-lg border text-sm outline-none transition-all duration-200 focus:ring-1"
-                style={fieldStyle("name")}
-                onChange={() => errors.name && setErrors((e) => ({ ...e, name: false }))}
-              />
-              <label>{t("namePlaceholder")}</label>
-              {errors.name && <p className="text-xs text-red-500 mt-1">{t("nameRequired")}</p>}
-            </div>
+          <div
+            className="rounded-xl p-6 border animate-on-scroll"
+            style={{
+              backgroundColor: "var(--bg)",
+              borderColor: "var(--border-card)",
+            }}
+          >
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
+              <div className="floating-field">
+                <input
+                  name="name"
+                  placeholder=" "
+                  className="w-full px-4 py-3 rounded-md border text-sm outline-none transition-all duration-200 focus:ring-1"
+                  style={fieldStyle("name")}
+                  onChange={() => errors.name && setErrors((e) => ({ ...e, name: false }))}
+                />
+                <label>{t("namePlaceholder")}</label>
+                {errors.name && <p className="text-xs text-red-500 mt-1">{t("nameRequired")}</p>}
+              </div>
 
-            <div className="floating-field">
-              <input
-                name="phone"
-                type="tel"
-                placeholder=" "
-                className="w-full px-4 py-3 rounded-lg border text-sm outline-none transition-all duration-200 focus:ring-1"
-                style={fieldStyle("phone")}
-                onChange={() => errors.phone && setErrors((e) => ({ ...e, phone: false }))}
-              />
-              <label>{t("phonePlaceholder")}</label>
-              {errors.phone && <p className="text-xs text-red-500 mt-1">{t("phoneRequired")}</p>}
-            </div>
+              <div className="floating-field">
+                <input
+                  name="phone"
+                  type="tel"
+                  placeholder=" "
+                  className="w-full px-4 py-3 rounded-md border text-sm outline-none transition-all duration-200 focus:ring-1"
+                  style={fieldStyle("phone")}
+                  onChange={() => errors.phone && setErrors((e) => ({ ...e, phone: false }))}
+                />
+                <label>{t("phonePlaceholder")}</label>
+                {errors.phone && <p className="text-xs text-red-500 mt-1">{t("phoneRequired")}</p>}
+              </div>
 
-            <div className="floating-field">
-              <textarea
-                name="description"
-                rows={4}
-                placeholder=" "
-                className="w-full px-4 py-3 rounded-lg border text-sm outline-none transition-all duration-200 focus:ring-1 resize-none"
+              <div className="floating-field">
+                <textarea
+                  name="description"
+                  rows={3}
+                  placeholder=" "
+                  className="w-full px-4 py-3 rounded-md border text-sm outline-none transition-all duration-200 focus:ring-1 resize-none"
+                  style={{
+                    backgroundColor: "var(--bg-card)",
+                    borderColor: "var(--border-card)",
+                    color: "var(--text-primary)",
+                  }}
+                />
+                <label>{t("descriptionPlaceholder")}</label>
+              </div>
+
+              {status === "error" && (
+                <p className="text-sm text-red-500">{t("error")}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full text-white text-sm font-bold py-3.5 rounded-md tracking-wide transition-all duration-300 hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
                 style={{
-                  backgroundColor: "var(--bg-card)",
-                  borderColor: "var(--border-card)",
-                  color: "var(--text-primary)",
+                  background: "linear-gradient(135deg, var(--accent-start), var(--accent-end))",
+                  boxShadow: "0 4px 16px var(--accent-glow)",
                 }}
-              />
-              <label>{t("descriptionPlaceholder")}</label>
-            </div>
-
-            {status === "error" && (
-              <p className="text-sm text-red-500">{t("error")}</p>
-            )}
-
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className="w-full text-white text-sm font-semibold py-3.5 rounded-lg tracking-wide transition-all duration-300 hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
-              style={{
-                backgroundImage: "linear-gradient(135deg, var(--accent-start), var(--accent-end))",
-                boxShadow: "0 4px 16px var(--accent-glow)",
-              }}
-            >
-              {status === "loading" ? "..." : t("submit")}
-            </button>
-          </form>
+              >
+                {status === "loading" ? "..." : t("submit")}
+              </button>
+            </form>
+          </div>
         )}
       </div>
     </section>
