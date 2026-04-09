@@ -58,13 +58,13 @@ export default function Hero() {
         <span
           className="hidden sm:block"
           style={{
-            fontSize: "clamp(70px, 16vw, 320px)",
-            fontWeight: 900,
-            letterSpacing: "0.15em",
+            fontSize: "clamp(80px, 18vw, 360px)",
+            fontWeight: 400,
+            letterSpacing: "-0.02em",
             lineHeight: 0.85,
             color: "transparent",
-            WebkitTextStroke: "0.5px rgba(255,255,255,0.06)",
-            fontFamily: "'BebasNeue', 'Impact', sans-serif",
+            WebkitTextStroke: "1px rgba(255,255,255,0.12)",
+            fontFamily: "'BebasNeue', 'Impact', 'Arial Narrow', sans-serif",
           }}
         >
           LOGISTICS
