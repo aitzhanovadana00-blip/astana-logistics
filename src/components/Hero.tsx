@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export default function Hero() {
@@ -7,16 +8,19 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-end overflow-hidden">
       {/* LAYER 1: Background photo */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/hero-ford-bg.jpg"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
+          fill
+          quality={90}
+          priority
+          className="object-cover object-[center_30%]"
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,15,30,0.45) 0%, rgba(10,15,30,0.15) 40%, rgba(10,15,30,0.25) 55%, rgba(10,15,30,0.8) 100%)",
+              "linear-gradient(180deg, rgba(10,15,30,0.2) 0%, rgba(10,15,30,0.05) 40%, rgba(10,15,30,0.1) 55%, rgba(10,15,30,0.75) 100%)",
           }}
         />
       </div>
@@ -26,13 +30,13 @@ export default function Hero() {
         <span
           className="hidden sm:block"
           style={{
-            fontSize: "clamp(50px, 11vw, 220px)",
+            fontSize: "clamp(70px, 16vw, 320px)",
             fontWeight: 900,
-            letterSpacing: "-0.02em",
+            letterSpacing: "0.15em",
             lineHeight: 0.85,
             color: "transparent",
-            WebkitTextStroke: "2px rgba(255,255,255,0.15)",
-            fontFamily: "system-ui, -apple-system, sans-serif",
+            WebkitTextStroke: "0.3px rgba(255,255,255,0.35)",
+            fontFamily: "'BebasNeue', 'Impact', 'Arial Narrow', sans-serif",
           }}
         >
           LOGISTICS
@@ -41,13 +45,13 @@ export default function Hero() {
         <span
           className="block sm:hidden"
           style={{
-            fontSize: "60px",
+            fontSize: "80px",
             fontWeight: 900,
-            letterSpacing: "-0.02em",
+            letterSpacing: "0.15em",
             lineHeight: 0.85,
             color: "transparent",
-            WebkitTextStroke: "1.5px rgba(255,255,255,0.12)",
-            fontFamily: "system-ui, -apple-system, sans-serif",
+            WebkitTextStroke: "0.2px rgba(255,255,255,0.3)",
+            fontFamily: "'BebasNeue', 'Impact', 'Arial Narrow', sans-serif",
           }}
         >
           LOGISTICS
@@ -70,7 +74,7 @@ export default function Hero() {
           {t("heroLine1")}
         </h1>
         <p
-          className="mt-1"
+          className="mt-0"
           style={{
             fontSize: "clamp(0.6rem, 1.8vw, 1.6rem)",
             fontWeight: 300,
@@ -84,20 +88,7 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* LAYER 3: Truck cutout */}
-      <div className="absolute inset-0 z-[2] pointer-events-none flex items-end justify-center overflow-hidden">
-        <img
-          src="/hero-ford-cutout.png"
-          alt="Грузовик"
-          className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[65%] max-w-4xl h-auto object-contain"
-          style={{
-            marginBottom: "-15%",
-            filter: "drop-shadow(0 10px 40px rgba(0,0,0,0.4))",
-          }}
-        />
-      </div>
-
-      {/* LAYER 4: Bottom-left CTA */}
+      {/* LAYER 3: Bottom-left CTA */}
       <div className="relative z-[3] max-w-6xl mx-auto w-full px-4 sm:px-6 pb-6 sm:pb-10 md:pb-16">
         <div className="max-w-sm sm:max-w-md pointer-events-auto">
           <p
