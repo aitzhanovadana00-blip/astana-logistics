@@ -21,16 +21,32 @@ export default function Hero() {
         />
       </div>
 
-      {/* LAYER 2: Outlined watermark text "LOGISTICS" */}
-      <div className="absolute top-[5%] md:top-[7%] left-0 right-0 z-[1] flex justify-center pointer-events-none select-none overflow-hidden">
+      {/* LAYER 2: Outlined watermark "LOGISTICS" */}
+      <div className="absolute top-[15%] sm:top-[11%] md:top-[10%] left-0 right-0 z-[1] flex justify-center pointer-events-none select-none overflow-hidden">
         <span
+          className="hidden sm:block"
           style={{
-            fontSize: "clamp(100px, 18vw, 280px)",
+            fontSize: "clamp(50px, 11vw, 220px)",
             fontWeight: 900,
             letterSpacing: "-0.02em",
             lineHeight: 0.85,
             color: "transparent",
-            WebkitTextStroke: "3px rgba(255,255,255,0.2)",
+            WebkitTextStroke: "2px rgba(255,255,255,0.15)",
+            fontFamily: "system-ui, -apple-system, sans-serif",
+          }}
+        >
+          LOGISTICS
+        </span>
+        {/* Mobile: smaller watermark */}
+        <span
+          className="block sm:hidden"
+          style={{
+            fontSize: "60px",
+            fontWeight: 900,
+            letterSpacing: "-0.02em",
+            lineHeight: 0.85,
+            color: "transparent",
+            WebkitTextStroke: "1.5px rgba(255,255,255,0.12)",
             fontFamily: "system-ui, -apple-system, sans-serif",
           }}
         >
@@ -38,13 +54,13 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* LAYER 2b: Main headline — positioned at top, BEHIND truck */}
-      <div className="absolute top-[14%] md:top-[16%] left-0 right-0 z-[1] text-center px-6 pointer-events-none">
+      {/* LAYER 2b: Main headline — BEHIND truck */}
+      <div className="absolute top-[12%] sm:top-[11%] md:top-[12%] left-0 right-0 z-[1] text-center px-4 sm:px-6 pointer-events-none">
         <h1
           style={{
-            fontSize: "clamp(2.8rem, 8vw, 7rem)",
+            fontSize: "clamp(1.6rem, 7vw, 7rem)",
             fontWeight: 400,
-            letterSpacing: "0.07em",
+            letterSpacing: "-0.02em",
             lineHeight: 0.95,
             color: "#1a1a1a",
             fontFamily: "'QueenOfClubs', 'Impact', 'Arial Narrow', sans-serif",
@@ -56,9 +72,9 @@ export default function Hero() {
         <p
           className="mt-1"
           style={{
-            fontSize: "clamp(0.85rem, 2vw, 1.6rem)",
+            fontSize: "clamp(0.6rem, 1.8vw, 1.6rem)",
             fontWeight: 300,
-            letterSpacing: "0.25em",
+            letterSpacing: "0.2em",
             color: "#333333",
             fontFamily: "'Helvetica Neue', Arial, sans-serif",
             textTransform: "uppercase",
@@ -68,24 +84,24 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* LAYER 3: Truck cutout — LARGE, overlapping text */}
-      <div className="absolute inset-0 z-[2] pointer-events-none flex items-end justify-center">
+      {/* LAYER 3: Truck cutout */}
+      <div className="absolute inset-0 z-[2] pointer-events-none flex items-end justify-center overflow-hidden">
         <img
           src="/hero-ford-cutout.png"
           alt="Грузовик"
-          className="w-[250%] sm:w-[230%] md:w-[210%] lg:w-[200%] h-auto object-contain"
+          className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[65%] max-w-4xl h-auto object-contain"
           style={{
-            marginBottom: "-28%",
+            marginBottom: "-15%",
             filter: "drop-shadow(0 10px 40px rgba(0,0,0,0.4))",
           }}
         />
       </div>
 
       {/* LAYER 4: Bottom-left CTA */}
-      <div className="relative z-[3] max-w-6xl mx-auto w-full px-6 pb-14 md:pb-18">
-        <div className="max-w-md pointer-events-auto">
+      <div className="relative z-[3] max-w-6xl mx-auto w-full px-4 sm:px-6 pb-6 sm:pb-10 md:pb-16">
+        <div className="max-w-sm sm:max-w-md pointer-events-auto">
           <p
-            className="text-base sm:text-lg md:text-xl font-light leading-snug mb-5"
+            className="text-sm sm:text-base md:text-xl font-light leading-snug mb-3 sm:mb-5"
             style={{
               color: "rgba(255,255,255,0.9)",
               textShadow: "0 2px 12px rgba(0,0,0,0.7)",
@@ -95,12 +111,12 @@ export default function Hero() {
           </p>
           <a
             href="#form"
-            className="group inline-flex items-center gap-2 text-sm font-bold px-8 py-4 tracking-wide uppercase transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.97]"
+            className="group inline-flex items-center gap-2 text-xs sm:text-sm font-bold px-6 sm:px-8 py-3 sm:py-4 tracking-wide uppercase transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.97]"
             style={{
               background: "#E8A317",
               color: "#1a1a1a",
               clipPath:
-                "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)",
+                "polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)",
             }}
           >
             {t("cta")}
