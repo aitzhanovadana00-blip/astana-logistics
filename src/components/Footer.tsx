@@ -6,7 +6,7 @@ export default function Footer() {
   const locale = useLocale();
 
   return (
-    <footer style={{ backgroundColor: "var(--primary, #00327D)" }}>
+    <footer style={{ backgroundColor: "var(--primary, #0A2463)" }}>
       <div className="max-w-7xl mx-auto px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
           {/* Brand */}
