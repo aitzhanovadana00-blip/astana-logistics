@@ -17,21 +17,23 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 border-b"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md"
       style={{
-        backgroundColor: "var(--bg-card)",
-        borderColor: "var(--border-nav)",
-        boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+        backgroundColor: "color-mix(in srgb, var(--bg-card) 80%, transparent)",
+        borderBottom: "1px solid var(--border-nav)",
+        boxShadow: "0 12px 32px -4px rgba(25,28,29,0.06)",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-8 h-16 flex items-center justify-between">
         <a
           href={`/${locale}`}
           className="flex items-center gap-2.5"
-          style={{ color: "var(--text-primary)" }}
         >
-          <Logo size={40} />
-          <span className="text-sm font-bold tracking-tight" style={{ color: "var(--accent-start)" }}>
+          <Logo size={36} />
+          <span
+            className="text-base font-bold tracking-tight"
+            style={{ color: "var(--primary)" }}
+          >
             ASTANA{" "}
             <span className="font-light" style={{ color: "var(--accent-end)" }}>
               LOGISTICS
@@ -39,26 +41,36 @@ export default function Header() {
           </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-xs tracking-wider uppercase font-medium transition-colors hover:opacity-70"
-              style={{ color: "var(--text-secondary)" }}
+              className="text-sm font-medium transition-colors duration-300 hover:text-blue-900 dark:hover:text-blue-300"
+              style={{ color: "var(--text-muted, var(--text-secondary))" }}
             >
               {link.label}
             </a>
           ))}
-        </nav>
+        </div>
 
         <div className="hidden md:flex items-center gap-3">
           <LangSwitcher />
           <ThemeToggle />
+          <a
+            href="#form"
+            className="text-sm font-semibold px-6 py-2.5 rounded-lg text-white transition-all hover:-translate-y-0.5"
+            style={{
+              background: "linear-gradient(135deg, var(--accent-start), var(--accent-end))",
+              boxShadow: "0 4px 12px var(--accent-glow)",
+            }}
+          >
+            {t("cta") || "Заявка"}
+          </a>
         </div>
 
         <BurgerMenu />
-      </div>
+      </nav>
     </header>
   );
 }

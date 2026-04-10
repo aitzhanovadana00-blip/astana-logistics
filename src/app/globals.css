@@ -19,39 +19,69 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg: #F8FAFC;
+  --bg: #F8F9FA;
+  --bg-alt: #F3F4F5;
   --bg-card: #FFFFFF;
-  --text-primary: #1E1B18;
-  --text-secondary: #64748B;
-  --accent-start: #0A2463;
-  --accent-end: #3E92CC;
-  --accent-text: #0A2463;
-  --accent-glow: rgba(62,146,204,0.15);
-  --border-card: #E2E8F0;
-  --border-nav: #E2E8F0;
+  --text-primary: #191C1D;
+  --text-secondary: #434653;
+  --text-muted: #737784;
+  --accent-start: #00327D;
+  --accent-end: #0047AB;
+  --accent-text: #00327D;
+  --accent-glow: rgba(0,71,171,0.15);
+  --border-card: #C3C6D5;
+  --border-nav: #E1E3E4;
   --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
-  --shadow-card-hover: 0 4px 16px rgba(10,36,99,0.1), 0 8px 32px rgba(62,146,204,0.08);
+  --shadow-card-hover: 0 12px 32px -4px rgba(25,28,29,0.06);
+  --primary: #00327D;
+  --primary-container: #0047AB;
+  --on-primary: #FFFFFF;
+  --surface-container: #EDEEEF;
+  --surface-container-low: #F3F4F5;
+  --outline-variant: #C3C6D5;
 }
 
 .dark {
-  --bg: #06060C;
-  --bg-card: rgba(62,146,204,0.05);
-  --text-primary: #F0F4F8;
-  --text-secondary: #94A3B8;
-  --accent-start: #1A3A7A;
-  --accent-end: #5BB0E5;
-  --accent-text: #5BB0E5;
-  --accent-glow: rgba(62,146,204,0.2);
-  --border-card: rgba(62,146,204,0.12);
-  --border-nav: rgba(62,146,204,0.12);
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15);
-  --shadow-card-hover: 0 4px 16px rgba(62,146,204,0.15), 0 8px 32px rgba(62,146,204,0.1);
+  --bg: #0F1114;
+  --bg-alt: #1A1D23;
+  --bg-card: #1E2128;
+  --text-primary: #E1E3E4;
+  --text-secondary: #9BA1B0;
+  --text-muted: #737784;
+  --accent-start: #B1C5FF;
+  --accent-end: #7DA8FF;
+  --accent-text: #B1C5FF;
+  --accent-glow: rgba(177,197,255,0.15);
+  --border-card: rgba(177,197,255,0.12);
+  --border-nav: rgba(177,197,255,0.08);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+  --shadow-card-hover: 0 12px 32px -4px rgba(0,0,0,0.4);
+  --primary: #B1C5FF;
+  --primary-container: #00419E;
+  --on-primary: #001946;
+  --surface-container: #2A2D35;
+  --surface-container-low: #1A1D23;
+  --outline-variant: rgba(177,197,255,0.15);
 }
 
 body {
   background-color: var(--bg);
   color: var(--text-primary);
   font-family: 'Inter', system-ui, sans-serif;
+}
+
+.editorial-spacing { letter-spacing: -0.02em; }
+
+.font-headline {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+}
+.dark .glass-panel {
+  background: rgba(30, 33, 40, 0.8);
 }
 
 /* Scroll-triggered animations */

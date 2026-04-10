@@ -4,139 +4,124 @@ export default function Hero() {
   const t = useTranslations("hero");
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: "linear-gradient(135deg, #0A2463 0%, #1a3a7a 40%, #3E92CC 100%)",
-        }}
-      />
-
-      {/* Decorative grid pattern */}
-      <div
-        className="absolute inset-0 z-[1] opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      {/* Decorative circles */}
-      <div
-        className="absolute top-[10%] right-[10%] w-64 h-64 rounded-full z-[1]"
-        style={{
-          background: "radial-gradient(circle, rgba(62,146,204,0.2) 0%, transparent 70%)",
-        }}
-      />
-      <div
-        className="absolute bottom-[15%] left-[5%] w-96 h-96 rounded-full z-[1]"
-        style={{
-          background: "radial-gradient(circle, rgba(10,36,99,0.3) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Small accent dots */}
-      <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-white/20 z-[1]" />
-      <div className="absolute top-[35%] right-[20%] w-1.5 h-1.5 rounded-full bg-white/15 z-[1]" />
-      <div className="absolute bottom-[30%] left-[25%] w-1 h-1 rounded-full bg-white/25 z-[1]" />
-      <div className="absolute top-[60%] right-[12%] w-2.5 h-2.5 rounded-full bg-white/10 z-[1]" />
-
-      {/* Diagonal accent lines */}
-      <div
-        className="absolute top-0 right-[30%] w-px h-[40%] z-[1] opacity-10"
-        style={{ background: "linear-gradient(to bottom, transparent, white, transparent)" }}
-      />
-      <div
-        className="absolute bottom-0 left-[40%] w-px h-[30%] z-[1] opacity-10"
-        style={{ background: "linear-gradient(to top, transparent, white, transparent)" }}
-      />
-
-      {/* Watermark */}
-      <div className="absolute top-[50%] left-0 right-0 -translate-y-1/2 z-[1] flex justify-center pointer-events-none select-none overflow-hidden">
-        <span
-          className="hidden sm:block"
-          style={{
-            fontSize: "clamp(80px, 18vw, 360px)",
-            fontWeight: 400,
-            letterSpacing: "-0.02em",
-            lineHeight: 0.85,
-            color: "transparent",
-            WebkitTextStroke: "1px rgba(255,255,255,0.12)",
-            fontFamily: "'BebasNeue', 'Impact', 'Arial Narrow', sans-serif",
-          }}
-        >
-          LOGISTICS
-        </span>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-[2] text-center px-6 max-w-3xl mx-auto">
-        <h1
-          style={{
-            fontSize: "clamp(2rem, 6vw, 4rem)",
-            fontWeight: 800,
-            letterSpacing: "-0.02em",
-            lineHeight: 1.1,
-            color: "#ffffff",
-            fontFamily: "'Inter', system-ui, sans-serif",
-          }}
-        >
-          {t("heroLine1")}
-          <br />
-          <span style={{ color: "rgba(255,255,255,0.7)", fontWeight: 300 }}>
-            {t("heroLine2")}
-          </span>
-        </h1>
-
-        <p
-          className="mt-4 text-sm sm:text-base"
-          style={{ color: "rgba(255,255,255,0.6)", maxWidth: "480px", margin: "16px auto 0" }}
-        >
-          {t("description")}
-        </p>
-
-        <a
-          href="#form"
-          className="group inline-flex items-center gap-2 mt-8 px-8 py-3.5 text-sm font-bold tracking-wide uppercase transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
-          style={{
-            background: "#ffffff",
-            color: "#0A2463",
-            borderRadius: "6px",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
-          }}
-        >
-          {t("cta")}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="transition-transform duration-300 group-hover:translate-x-1"
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
+      <div className="max-w-7xl mx-auto px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Left: Text Content */}
+        <div className="z-10">
+          <span
+            className="inline-block py-1.5 px-4 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full mb-6"
+            style={{
+              backgroundColor: "var(--surface-container-low, #F3F4F5)",
+              color: "var(--primary)",
+              border: "1px solid var(--outline-variant)",
+            }}
           >
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
-        </a>
+            {t("subtitle")}
+          </span>
 
-        {/* Stats */}
-        <div className="flex justify-center gap-10 sm:gap-16 mt-12">
-          {[
-            { num: t("stat1num"), label: t("stat1label") },
-            { num: t("stat2num"), label: t("stat2label") },
-            { num: t("stat3num"), label: t("stat3label") },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-white">{stat.num}</div>
-              <div className="text-[10px] sm:text-xs text-white/50 tracking-wider mt-1">{stat.label}</div>
+          <h1
+            className="font-headline editorial-spacing leading-[1.1] mb-8"
+            style={{
+              fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+              fontWeight: 800,
+              color: "var(--primary)",
+              fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
+            }}
+          >
+            {t("heroLine1")}
+            <br />
+            <span style={{ color: "var(--text-muted, var(--text-secondary))", fontWeight: 400 }}>
+              {t("heroLine2")}
+            </span>
+          </h1>
+
+          <p
+            className="text-lg max-w-xl mb-10 leading-relaxed"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            {t("description")}
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="#form"
+              className="group flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all hover:shadow-2xl active:scale-95"
+              style={{
+                background: "linear-gradient(135deg, var(--accent-start), var(--accent-end))",
+                boxShadow: "0 4px 16px var(--accent-glow)",
+              }}
+            >
+              {t("cta")}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform group-hover:translate-x-1"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+            <a
+              href="#services"
+              className="px-8 py-4 rounded-xl font-bold transition-all active:scale-95"
+              style={{
+                border: "1px solid var(--outline-variant)",
+                color: "var(--primary)",
+              }}
+            >
+              {t("servicesBtn") || "Наши услуги"}
+            </a>
+          </div>
+        </div>
+
+        {/* Right: Hero Image */}
+        <div className="relative h-[400px] lg:h-[600px] flex items-center justify-center">
+          <div
+            className="absolute inset-0 rounded-[3rem] transform rotate-3"
+            style={{ background: "linear-gradient(135deg, var(--accent-glow), transparent)" }}
+          />
+          <img
+            alt="Astana Logistics"
+            className="w-full h-full object-cover rounded-[3rem] shadow-2xl z-0"
+            src="/hero-bg-hd.jpg"
+          />
+          {/* Floating Glass Card */}
+          <div
+            className="absolute bottom-12 -left-6 lg:-left-12 glass-panel p-5 rounded-2xl max-w-[200px] z-10"
+            style={{ boxShadow: "0 12px 32px -4px rgba(25,28,29,0.1)" }}
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center"
+                style={{ background: "linear-gradient(135deg, var(--accent-start), var(--accent-end))" }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" />
+                  <circle cx="5.5" cy="18.5" r="2.5" />
+                  <circle cx="18.5" cy="18.5" r="2.5" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-tight" style={{ color: "var(--primary)" }}>
+                  {t("stat1label")}
+                </p>
+                <p className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>{t("stat1num")}</p>
+              </div>
             </div>
-          ))}
+            <div
+              className="h-1 w-full rounded-full overflow-hidden"
+              style={{ backgroundColor: "var(--surface-container, #EDEEEF)" }}
+            >
+              <div className="h-full w-2/3 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent-start), var(--accent-end))" }} />
+            </div>
+          </div>
         </div>
       </div>
     </section>
