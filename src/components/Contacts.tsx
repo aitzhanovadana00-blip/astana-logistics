@@ -41,7 +41,7 @@ export default function Contacts() {
         <h2
           className="font-headline text-3xl md:text-4xl font-bold mb-16 text-center editorial-spacing animate-on-scroll"
           style={{
-            color: "var(--primary)",
+            color: "var(--heading)",
             fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
           }}
         >

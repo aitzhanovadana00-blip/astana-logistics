@@ -17,7 +17,7 @@ export default function Stats() {
             <p
               className="font-headline text-5xl md:text-6xl font-extrabold mb-2 editorial-spacing"
               style={{
-                color: "var(--primary)",
+                color: "var(--heading)",
                 fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
               }}
             >

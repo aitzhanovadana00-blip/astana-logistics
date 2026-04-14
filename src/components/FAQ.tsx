@@ -14,7 +14,7 @@ export default function FAQ() {
         <h2
           className="font-headline text-3xl md:text-4xl font-bold mb-16 text-center editorial-spacing animate-on-scroll"
           style={{
-            color: "var(--primary)",
+            color: "var(--heading)",
             fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
           }}
         >
@@ -38,7 +38,7 @@ export default function FAQ() {
               >
                 <span
                   className="text-sm font-semibold pr-4"
-                  style={{ color: openIndex === i ? "var(--primary)" : "var(--text-primary)" }}
+                  style={{ color: openIndex === i ? "var(--heading)" : "var(--text-primary)" }}
                 >
                   {item.question}
                 </span>

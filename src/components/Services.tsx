@@ -41,7 +41,7 @@ export default function Services() {
             <h2
               className="font-headline text-3xl md:text-5xl font-bold mb-6 editorial-spacing animate-on-scroll"
               style={{
-                color: "var(--primary)",
+                color: "var(--heading)",
                 fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
               }}
             >
@@ -90,7 +90,7 @@ export default function Services() {
                 <a
                   href={`/${locale}/logistics`}
                   className="inline-flex items-center gap-2 text-sm font-bold transition-all group/link"
-                  style={{ color: "var(--primary)" }}
+                  style={{ color: "var(--heading)" }}
                 >
                   {t("outsourcing.link")}
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/link:translate-x-1 transition-transform">

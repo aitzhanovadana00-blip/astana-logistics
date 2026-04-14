@@ -32,7 +32,7 @@ export default function Header() {
           <Logo size={36} />
           <span
             className="text-base font-bold tracking-tight"
-            style={{ color: "var(--primary)" }}
+            style={{ color: "var(--heading)" }}
           >
             ASTANA{" "}
             <span className="font-light" style={{ color: "var(--accent-end)" }}>
