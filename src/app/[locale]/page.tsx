@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Advantages from "@/components/Advantages";
+import Contract from "@/components/Contract";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import Contacts from "@/components/Contacts";
@@ -18,6 +19,7 @@ export default function Home() {
         <Services />
         <Gallery />
         <Advantages />
+        <Contract />
         <Stats />
         <ContactForm />
         <FAQ />

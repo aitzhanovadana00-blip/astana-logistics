@@ -2,12 +2,15 @@
 
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import WaveBackground from "@/components/ui/wave-background";
 
 export default function Hero() {
   const t = useTranslations("hero");
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && resolvedTheme === "dark";
 
   return (
     <section className="relative min-h-[92vh] overflow-hidden flex items-center justify-center pt-24 pb-24">
@@ -41,7 +44,7 @@ export default function Hero() {
           style={{
             fontSize: "clamp(2rem, 4.8vw, 3.75rem)",
             fontWeight: 800,
-            color: isDark ? "#f1f1f1" : "#1f1f1f",
+            color: "var(--hero-title)",
             fontFamily:
               "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
           }}
@@ -55,7 +58,7 @@ export default function Hero() {
           style={{
             fontSize: "clamp(1rem, 1.8vw, 1.375rem)",
             fontWeight: 300,
-            color: isDark ? "rgba(241,241,241,0.6)" : "rgba(31,31,31,0.55)",
+            color: "var(--hero-title-muted)",
             fontFamily:
               "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
           }}
@@ -66,9 +69,7 @@ export default function Hero() {
         {/* Description */}
         <p
           className="text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed"
-          style={{
-            color: isDark ? "rgba(241,241,241,0.78)" : "rgba(31,31,31,0.72)",
-          }}
+          style={{ color: "var(--hero-description)" }}
         >
           {t("description")}
         </p>
@@ -105,13 +106,9 @@ export default function Hero() {
             href="#services"
             className="px-8 py-4 rounded-xl font-bold transition-all active:scale-95 backdrop-blur-md hover:shadow-lg"
             style={{
-              border: `1px solid ${
-                isDark ? "rgba(241,241,241,0.22)" : "rgba(31,31,31,0.18)"
-              }`,
-              color: isDark ? "#f1f1f1" : "#1f1f1f",
-              backgroundColor: isDark
-                ? "rgba(15,30,54,0.35)"
-                : "rgba(255,255,255,0.55)",
+              border: "1px solid var(--hero-cta-border)",
+              color: "var(--hero-cta-text)",
+              backgroundColor: "var(--hero-cta-bg)",
             }}
           >
             {t("servicesBtn") || "Наши услуги"}

@@ -75,6 +75,55 @@ export default function Contacts() {
             </a>
           ))}
         </div>
+
+        {/* Map — зона обслуживания */}
+        <div className="mt-20 max-w-5xl mx-auto animate-on-scroll">
+          <div className="text-center mb-6">
+            <h3
+              className="text-[10px] font-bold uppercase tracking-[0.3em] mb-3"
+              style={{ color: "var(--text-muted, var(--text-secondary))" }}
+            >
+              {t("mapHeading")}
+            </h3>
+            <p className="text-sm md:text-base" style={{ color: "var(--text-secondary)" }}>
+              {t("mapCaption")}
+            </p>
+          </div>
+
+          <div
+            className="relative rounded-3xl overflow-hidden border"
+            style={{
+              borderColor: "var(--border-card)",
+              boxShadow: "var(--shadow-card)",
+            }}
+          >
+            <iframe
+              title="Зона обслуживания — Астана и Казахстан"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=46.4917%2C40.5686%2C87.3156%2C55.4422&layer=mapnik&marker=51.1694%2C71.4491"
+              loading="lazy"
+              className="w-full h-[380px] md:h-[460px] block border-0"
+              style={{
+                filter: "saturate(0.85)",
+              }}
+            />
+            <a
+              href="https://2gis.kz/astana"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold backdrop-blur-md transition-all hover:-translate-y-0.5"
+              style={{
+                backgroundColor: "var(--bg-card)",
+                color: "var(--heading)",
+                border: "1px solid var(--border-card)",
+              }}
+            >
+              {t("mapLink")}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17L17 7M17 7H8M17 7v9" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -20,20 +20,48 @@ export async function POST(request: NextRequest) {
   }
 
   const body = await request.json();
-  const { name, phone, description, locale } = body;
+  const {
+    name,
+    phone,
+    cargoType,
+    volume,
+    addressFrom,
+    addressTo,
+    datetime,
+    description,
+    outsourcing,
+    locale,
+  } = body;
 
   if (!name || !phone) {
     return NextResponse.json({ error: "Name and phone required" }, { status: 400 });
   }
 
+  const cargoLabels: Record<string, string> = {
+    furniture: "Мебель",
+    appliances: "Техника",
+    pallets: "Паллеты",
+    warehouse: "Складские остатки",
+    other: "Другое",
+  };
+
+  const formattedDatetime = datetime
+    ? new Date(datetime).toLocaleString("ru-KZ", { timeZone: "Asia/Almaty" })
+    : null;
+
   const message = [
-    `📋 *Новая заявка*`,
+    outsourcing ? `🧭 *Заявка на аутсорсинг логистики*` : `📋 *Новая заявка*`,
     ``,
     `*Имя:* ${name}`,
     `*Телефон:* ${phone}`,
+    cargoType ? `*Тип груза:* ${cargoLabels[cargoType] ?? cargoType}` : "",
+    volume ? `*Объём:* ${volume}` : "",
+    addressFrom ? `*Откуда:* ${addressFrom}` : "",
+    addressTo ? `*Куда:* ${addressTo}` : "",
+    formattedDatetime ? `*Дата/время:* ${formattedDatetime}` : "",
     description ? `*Описание:* ${description}` : "",
     `*Язык:* ${locale ?? "ru"}`,
-    `*Дата:* ${new Date().toLocaleString("ru-KZ", { timeZone: "Asia/Almaty" })}`,
+    `*Отправлено:* ${new Date().toLocaleString("ru-KZ", { timeZone: "Asia/Almaty" })}`,
   ]
     .filter(Boolean)
     .join("\n");
