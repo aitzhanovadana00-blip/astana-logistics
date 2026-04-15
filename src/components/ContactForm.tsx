@@ -13,12 +13,35 @@ export default function ContactForm() {
   const isDark = mounted && resolvedTheme === "dark";
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const [phoneValue, setPhoneValue] = useState("");
+
+  // Format KZ/RU mobile: "+7 7XX XXX XX XX"
+  function formatPhone(raw: string): string {
+    let digits = raw.replace(/\D/g, "");
+    // Drop leading country code (7 or 8)
+    if (digits.startsWith("8") || digits.startsWith("7")) {
+      digits = digits.slice(1);
+    }
+    digits = digits.slice(0, 10);
+    if (digits.length === 0) return "";
+    let out = "+7";
+    if (digits.length >= 1) out += " " + digits.slice(0, 3);
+    if (digits.length >= 4) out += " " + digits.slice(3, 6);
+    if (digits.length >= 7) out += " " + digits.slice(6, 8);
+    if (digits.length >= 9) out += " " + digits.slice(8, 10);
+    return out;
+  }
+
+  function isValidPhone(value: string): boolean {
+    // Must be exactly +7 followed by 10 digits starting with 7 (KZ mobile)
+    return /^\+7\s?7\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$/.test(value.trim());
+  }
 
   function validate(form: FormData) {
     const errs: Record<string, boolean> = {};
     if (!form.get("name")?.toString().trim()) errs.name = true;
     const phone = form.get("phone")?.toString().trim() || "";
-    if (!phone || phone.length < 6) errs.phone = true;
+    if (!isValidPhone(phone)) errs.phone = true;
     setErrors(errs);
     return Object.keys(errs).length === 0;
   }
@@ -148,14 +171,21 @@ export default function ContactForm() {
                     <input
                       name="phone"
                       type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
                       placeholder={t("phonePlaceholder")}
+                      value={phoneValue}
+                      maxLength={16}
                       className="w-full px-4 py-3.5 rounded-xl border text-sm outline-none transition-all duration-200 focus:ring-2"
                       style={{
                         ...inputBase,
                         borderColor: errors.phone ? "#EF4444" : inputBorder,
                         boxShadow: errors.phone ? "0 0 0 1px #EF4444" : "none",
                       }}
-                      onChange={() => errors.phone && setErrors((e) => ({ ...e, phone: false }))}
+                      onChange={(e) => {
+                        setPhoneValue(formatPhone(e.target.value));
+                        if (errors.phone) setErrors((prev) => ({ ...prev, phone: false }));
+                      }}
                     />
                     {errors.phone && <p className="text-xs mt-1 px-1" style={{ color: "#FCA5A5" }}>{t("phoneRequired")}</p>}
                   </div>

@@ -41,7 +41,7 @@ export default function Header() {
           </span>
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           {links.map((link) => (
             <a
               key={link.href}
@@ -54,7 +54,7 @@ export default function Header() {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <LangSwitcher />
           <ThemeToggle />
           <a
