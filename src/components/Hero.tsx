@@ -114,23 +114,6 @@ export default function Hero() {
             {t("servicesBtn") || "Наши услуги"}
           </a>
         </div>
-
-        {/* Scroll hint */}
-        <div className="mt-20 flex flex-col items-center gap-2 opacity-60">
-          <div
-            className="w-px h-14"
-            style={{
-              background:
-                "linear-gradient(to bottom, transparent, var(--primary), transparent)",
-            }}
-          />
-          <span
-            className="text-[10px] uppercase tracking-[0.3em]"
-            style={{ color: "var(--text-muted)" }}
-          >
-            Scroll
-          </span>
-        </div>
       </div>
     </section>
   );

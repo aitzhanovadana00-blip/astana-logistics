@@ -3,6 +3,7 @@ import { useTranslations, useLocale } from "next-intl";
 export default function Footer() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
+  const contacts = useTranslations("contacts");
   const locale = useLocale();
 
   return (
@@ -27,7 +28,7 @@ export default function Footer() {
             </h5>
             <ul className="space-y-4">
               <li>
-                <a href="#services" className="text-white/50 text-sm hover:text-white transition-colors">
+                <a href={`/${locale}#services`} className="text-white/50 text-sm hover:text-white transition-colors">
                   {nav("services")}
                 </a>
               </li>
@@ -46,7 +47,7 @@ export default function Footer() {
             </h5>
             <ul className="space-y-4">
               <li>
-                <a href="#faq" className="text-white/50 text-sm hover:text-white transition-colors">
+                <a href={`/${locale}#faq`} className="text-white/50 text-sm hover:text-white transition-colors">
                   {nav("faq")}
                 </a>
               </li>
@@ -65,7 +66,7 @@ export default function Footer() {
             </h5>
             <div className="space-y-4">
               <a href="tel:+77753373130" className="block text-white/50 text-sm hover:text-white transition-colors font-semibold">
-                +7 775 337 3130
+                {contacts("phone")}
               </a>
               <a href="https://wa.me/77753373130" className="block text-white/50 text-sm hover:text-white transition-colors">
                 WhatsApp

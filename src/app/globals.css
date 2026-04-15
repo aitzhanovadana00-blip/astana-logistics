@@ -18,6 +18,17 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @theme {
   --animate-aurora: aurora 60s linear infinite;
 }
@@ -67,6 +78,9 @@
   --hero-cta-text: #1f1f1f;
   --hero-cta-border: rgba(31,31,31,0.18);
   --hero-cta-bg: rgba(255,255,255,0.55);
+  --logistics-hero-bg: linear-gradient(135deg, #EAF2FB 0%, #D8E8FA 45%, #F4F7FC 100%);
+  --logistics-hero-glow-a: rgba(0,71,171,0.18);
+  --logistics-hero-glow-b: rgba(62,146,204,0.18);
 }
 
 .dark {
@@ -94,6 +108,9 @@
   --hero-cta-text: #f1f1f1;
   --hero-cta-border: rgba(241,241,241,0.22);
   --hero-cta-bg: rgba(15,30,54,0.35);
+  --logistics-hero-bg: linear-gradient(135deg, #07101F 0%, #0F1E36 50%, #0B1A33 100%);
+  --logistics-hero-glow-a: rgba(0,71,171,0.35);
+  --logistics-hero-glow-b: rgba(79,163,255,0.25);
   --surface-container: #12253F;
   --surface-container-low: #0B1727;
   --outline-variant: rgba(0,71,171,0.24);

@@ -1,19 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import LangSwitcher from "./LangSwitcher";
 import ThemeToggle from "./ThemeToggle";
 
 export default function BurgerMenu() {
   const [open, setOpen] = useState(false);
   const t = useTranslations("nav");
+  const locale = useLocale();
 
   const links = [
-    { label: t("services"), href: "#services" },
-    { label: t("logistics"), href: "/logistics" },
-    { label: t("faq"), href: "#faq" },
-    { label: t("contacts"), href: "#contacts" },
+    { label: t("services"), href: `/${locale}#services` },
+    { label: t("logistics"), href: `/${locale}/logistics` },
+    { label: t("faq"), href: `/${locale}#faq` },
+    { label: t("contacts"), href: `/${locale}#contacts` },
   ];
 
   return (

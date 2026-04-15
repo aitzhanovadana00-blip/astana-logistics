@@ -9,10 +9,10 @@ export default function Header() {
   const locale = useLocale();
 
   const links = [
-    { label: t("services"), href: "#services" },
+    { label: t("services"), href: `/${locale}#services` },
     { label: t("logistics"), href: `/${locale}/logistics` },
-    { label: t("faq"), href: "#faq" },
-    { label: t("contacts"), href: "#contacts" },
+    { label: t("faq"), href: `/${locale}#faq` },
+    { label: t("contacts"), href: `/${locale}#contacts` },
   ];
 
   return (
@@ -58,7 +58,7 @@ export default function Header() {
           <LangSwitcher />
           <ThemeToggle />
           <a
-            href="#form"
+            href={`/${locale}#form`}
             className="text-sm font-semibold px-6 py-2.5 rounded-lg text-white transition-all hover:-translate-y-0.5"
             style={{
               background: "linear-gradient(135deg, var(--accent-start), var(--accent-end))",

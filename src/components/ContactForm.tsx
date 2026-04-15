@@ -123,17 +123,13 @@ export default function ContactForm() {
               <form onSubmit={handleSubmit} className="flex flex-col gap-8" noValidate>
                 {/* Группа: Контакт */}
                 <fieldset className="flex flex-col gap-4">
-                  <legend
-                    className="text-[10px] font-bold uppercase tracking-[0.22em] mb-2"
-                    style={{ color: labelColor }}
-                  >
-                    {t("groupContact")}
-                  </legend>
-
-                  <div className="floating-field">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs font-medium px-1" style={{ color: labelColor }}>
+                      {t("name")}
+                    </label>
                     <input
                       name="name"
-                      placeholder=" "
+                      placeholder={t("namePlaceholder")}
                       className="w-full px-4 py-3.5 rounded-xl border text-sm outline-none transition-all duration-200 focus:ring-2"
                       style={{
                         ...inputBase,
@@ -142,15 +138,17 @@ export default function ContactForm() {
                       }}
                       onChange={() => errors.name && setErrors((e) => ({ ...e, name: false }))}
                     />
-                    <label style={{ color: labelColor }}>{t("namePlaceholder")}</label>
-                    {errors.name && <p className="text-xs mt-1" style={{ color: "#FCA5A5" }}>{t("nameRequired")}</p>}
+                    {errors.name && <p className="text-xs mt-1 px-1" style={{ color: "#FCA5A5" }}>{t("nameRequired")}</p>}
                   </div>
 
-                  <div className="floating-field">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs font-medium px-1" style={{ color: labelColor }}>
+                      {t("phone")}
+                    </label>
                     <input
                       name="phone"
                       type="tel"
-                      placeholder=" "
+                      placeholder={t("phonePlaceholder")}
                       className="w-full px-4 py-3.5 rounded-xl border text-sm outline-none transition-all duration-200 focus:ring-2"
                       style={{
                         ...inputBase,
@@ -159,20 +157,12 @@ export default function ContactForm() {
                       }}
                       onChange={() => errors.phone && setErrors((e) => ({ ...e, phone: false }))}
                     />
-                    <label style={{ color: labelColor }}>{t("phonePlaceholder")}</label>
-                    {errors.phone && <p className="text-xs mt-1" style={{ color: "#FCA5A5" }}>{t("phoneRequired")}</p>}
+                    {errors.phone && <p className="text-xs mt-1 px-1" style={{ color: "#FCA5A5" }}>{t("phoneRequired")}</p>}
                   </div>
                 </fieldset>
 
                 {/* Группа: Груз */}
                 <fieldset className="flex flex-col gap-4">
-                  <legend
-                    className="text-[10px] font-bold uppercase tracking-[0.22em] mb-2"
-                    style={{ color: labelColor }}
-                  >
-                    {t("groupCargo")}
-                  </legend>
-
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
                       <label className="text-xs font-medium px-1" style={{ color: labelColor }}>
@@ -204,46 +194,45 @@ export default function ContactForm() {
                       </select>
                     </div>
 
-                    <div className="floating-field">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-medium px-1" style={{ color: labelColor }}>
+                        {t("volume")}
+                      </label>
                       <input
                         name="volume"
-                        placeholder=" "
+                        placeholder={t("volumePlaceholder")}
                         className="w-full px-4 py-3.5 rounded-xl border text-sm outline-none transition-all duration-200 focus:ring-2"
                         style={{ ...inputBase, borderColor: inputBorder }}
                       />
-                      <label style={{ color: labelColor }}>{t("volumePlaceholder")}</label>
                     </div>
                   </div>
                 </fieldset>
 
                 {/* Группа: Маршрут и время */}
                 <fieldset className="flex flex-col gap-4">
-                  <legend
-                    className="text-[10px] font-bold uppercase tracking-[0.22em] mb-2"
-                    style={{ color: labelColor }}
-                  >
-                    {t("groupRoute")}
-                  </legend>
-
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="floating-field">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-medium px-1" style={{ color: labelColor }}>
+                        {t("addressFrom")}
+                      </label>
                       <input
                         name="addressFrom"
-                        placeholder=" "
+                        placeholder={t("addressFromPlaceholder")}
                         className="w-full px-4 py-3.5 rounded-xl border text-sm outline-none transition-all duration-200 focus:ring-2"
                         style={{ ...inputBase, borderColor: inputBorder }}
                       />
-                      <label style={{ color: labelColor }}>{t("addressFromPlaceholder")}</label>
                     </div>
 
-                    <div className="floating-field">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-medium px-1" style={{ color: labelColor }}>
+                        {t("addressTo")}
+                      </label>
                       <input
                         name="addressTo"
-                        placeholder=" "
+                        placeholder={t("addressToPlaceholder")}
                         className="w-full px-4 py-3.5 rounded-xl border text-sm outline-none transition-all duration-200 focus:ring-2"
                         style={{ ...inputBase, borderColor: inputBorder }}
                       />
-                      <label style={{ color: labelColor }}>{t("addressToPlaceholder")}</label>
                     </div>
                   </div>
 
@@ -253,25 +242,24 @@ export default function ContactForm() {
                     </label>
                     <input
                       name="datetime"
-                      type="datetime-local"
+                      type="text"
+                      placeholder={t("datetimePlaceholder")}
                       className="w-full px-4 py-3.5 rounded-xl border text-sm outline-none transition-all duration-200 focus:ring-2"
-                      style={{
-                        ...inputBase,
-                        borderColor: inputBorder,
-                        colorScheme: isDark ? "dark" : "light",
-                      }}
+                      style={{ ...inputBase, borderColor: inputBorder }}
                     />
                   </div>
 
-                  <div className="floating-field">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs font-medium px-1" style={{ color: labelColor }}>
+                      {t("description")}
+                    </label>
                     <textarea
                       name="description"
                       rows={3}
-                      placeholder=" "
+                      placeholder={t("descriptionPlaceholder")}
                       className="w-full px-4 py-3.5 rounded-xl border text-sm outline-none transition-all duration-200 focus:ring-2 resize-none"
                       style={{ ...inputBase, borderColor: inputBorder }}
                     />
-                    <label style={{ color: labelColor }}>{t("descriptionPlaceholder")}</label>
                   </div>
                 </fieldset>
 

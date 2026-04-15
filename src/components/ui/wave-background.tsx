@@ -112,7 +112,8 @@ export default function WaveBackground({
     let frame = 0;
 
     const loop = () => {
-      program.uniforms.uTime.value = (performance.now() - start) / 1000;
+      // Slowed down 2× — animation feels more refined at this pace
+      program.uniforms.uTime.value = ((performance.now() - start) / 1000) * 0.5;
       program.uniforms.uDarkTheme.value = darkTheme ? 1 : 0;
       renderer.render({ scene: mesh });
       frame = requestAnimationFrame(loop);

@@ -1,22 +1,13 @@
-"use client";
-
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import WaveBackground from "@/components/ui/wave-background";
 
 const headlineFont =
   "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif";
 
 export default function LogisticsPage() {
   const t = useTranslations("logistics");
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  const isDark = mounted && resolvedTheme === "dark";
 
   const forWhom = t.raw("forWhom") as string[];
   const whatWeDo = t.raw("whatWeDo") as string[];
@@ -44,7 +35,30 @@ export default function LogisticsPage() {
       <main className="pt-16">
         {/* ─────────── HERO ─────────── */}
         <section className="relative min-h-[72vh] overflow-hidden flex items-center justify-center pt-20 pb-20">
-          <WaveBackground darkTheme={isDark} />
+          {/* Static gradient background */}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{ background: "var(--logistics-hero-bg)" }}
+          />
+          {/* Top-left radial glow */}
+          <div
+            aria-hidden
+            className="absolute top-0 left-1/4 w-[640px] h-[420px] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse, var(--logistics-hero-glow-a), transparent 70%)",
+            }}
+          />
+          {/* Bottom-right radial glow */}
+          <div
+            aria-hidden
+            className="absolute bottom-0 right-1/4 w-[520px] h-[360px] pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse, var(--logistics-hero-glow-b), transparent 70%)",
+            }}
+          />
 
           <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center">
             {/* Eyebrow badge */}
@@ -109,57 +123,55 @@ export default function LogisticsPage() {
           </div>
         </section>
 
-        {/* ─────────── FOR WHOM — editorial two-column ─────────── */}
+        {/* ─────────── FOR WHOM — centered single column ─────────── */}
         <section className="py-32" style={{ background: "var(--bg-alt, var(--bg))" }}>
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="grid md:grid-cols-[280px_1fr] gap-12 md:gap-20 items-start">
-              <div className="md:sticky md:top-24">
-                <p
-                  className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4"
-                  style={{ color: "var(--text-muted, var(--text-secondary))" }}
-                >
-                  {t("forWhomEyebrow")}
-                </p>
-                <h2
-                  className="font-headline text-3xl md:text-4xl font-bold editorial-spacing leading-[1.1]"
-                  style={{
-                    color: "var(--heading)",
-                    fontFamily: headlineFont,
-                  }}
-                >
-                  {t("forWhomHeading")}
-                </h2>
-              </div>
-
-              <ol
-                className="flex flex-col border-t"
-                style={{ borderColor: "var(--outline-variant)" }}
+          <div className="max-w-3xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <p
+                className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4"
+                style={{ color: "var(--text-muted, var(--text-secondary))" }}
               >
-                {forWhom.map((item, i) => (
-                  <li
-                    key={i}
-                    className="group flex items-start gap-6 py-8 border-b transition-all"
-                    style={{ borderColor: "var(--outline-variant)" }}
-                  >
-                    <span
-                      className="text-2xl font-bold shrink-0 w-12 transition-transform group-hover:translate-x-1"
-                      style={{
-                        color: "var(--primary)",
-                        fontFamily: headlineFont,
-                      }}
-                    >
-                      0{i + 1}
-                    </span>
-                    <p
-                      className="text-lg md:text-xl leading-snug font-medium"
-                      style={{ color: "var(--text-primary)" }}
-                    >
-                      {item}
-                    </p>
-                  </li>
-                ))}
-              </ol>
+                {t("forWhomEyebrow")}
+              </p>
+              <h2
+                className="font-headline text-3xl md:text-4xl font-bold editorial-spacing leading-[1.1]"
+                style={{
+                  color: "var(--heading)",
+                  fontFamily: headlineFont,
+                }}
+              >
+                {t("forWhomHeading")}
+              </h2>
             </div>
+
+            <ol
+              className="flex flex-col border-t"
+              style={{ borderColor: "var(--outline-variant)" }}
+            >
+              {forWhom.map((item, i) => (
+                <li
+                  key={i}
+                  className="group flex items-start gap-6 py-8 border-b transition-all"
+                  style={{ borderColor: "var(--outline-variant)" }}
+                >
+                  <span
+                    className="text-2xl font-bold shrink-0 w-12 transition-transform group-hover:translate-x-1"
+                    style={{
+                      color: "var(--primary)",
+                      fontFamily: headlineFont,
+                    }}
+                  >
+                    0{i + 1}
+                  </span>
+                  <p
+                    className="text-lg md:text-xl leading-snug font-medium"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {item}
+                  </p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -292,46 +304,54 @@ export default function LogisticsPage() {
 
         {/* ─────────── BIG CTA BAND ─────────── */}
         <section className="relative py-28 overflow-hidden">
+          {/* Light theme-aware base (reuses logistics hero gradient tokens) */}
           <div
+            aria-hidden
             className="absolute inset-0"
+            style={{ background: "var(--logistics-hero-bg)" }}
+          />
+          {/* Top-left radial glow */}
+          <div
+            aria-hidden
+            className="absolute top-0 left-1/4 w-[640px] h-[420px] pointer-events-none"
             style={{
               background:
-                "linear-gradient(135deg, #07101F 0%, #0F1E36 50%, #0B1A33 100%)",
+                "radial-gradient(ellipse, var(--logistics-hero-glow-a), transparent 70%)",
             }}
           />
-          {/* Decorative glow */}
+          {/* Bottom-right radial glow */}
           <div
-            className="absolute top-0 left-1/4 w-[600px] h-[400px] pointer-events-none"
+            aria-hidden
+            className="absolute bottom-0 right-1/4 w-[520px] h-[360px] pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse, rgba(0,71,171,0.35), transparent 70%)",
-            }}
-          />
-          <div
-            className="absolute bottom-0 right-1/4 w-[500px] h-[300px] pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse, rgba(79,163,255,0.25), transparent 70%)",
+                "radial-gradient(ellipse, var(--logistics-hero-glow-b), transparent 70%)",
             }}
           />
 
           <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
             <h2
-              className="font-headline text-3xl md:text-5xl font-extrabold text-white mb-5 editorial-spacing leading-tight"
-              style={{ fontFamily: headlineFont }}
+              className="font-headline text-3xl md:text-5xl font-extrabold mb-5 editorial-spacing leading-tight"
+              style={{
+                color: "var(--heading)",
+                fontFamily: headlineFont,
+              }}
             >
               {t("bigCtaTitle")}
             </h2>
-            <p className="text-base md:text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed">
+            <p
+              className="text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed"
+              style={{ color: "var(--text-secondary)" }}
+            >
               {t("bigCtaSubtitle")}
             </p>
             <a
               href="#form"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold transition-all hover:shadow-2xl hover:-translate-y-0.5 active:scale-95"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all hover:shadow-2xl hover:-translate-y-0.5 active:scale-95"
               style={{
-                backgroundColor: "#ffffff",
-                color: "#0047AB",
-                boxShadow: "0 6px 28px rgba(0,0,0,0.3)",
+                background:
+                  "linear-gradient(135deg, var(--accent-start), var(--accent-end))",
+                boxShadow: "0 6px 28px rgba(0,71,171,0.28)",
               }}
             >
               {t("cta")}
