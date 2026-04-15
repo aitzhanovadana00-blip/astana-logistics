@@ -15,7 +15,7 @@ export default function Stats() {
         {stats.map((stat) => (
           <div key={stat.label} className="animate-on-scroll">
             <p
-              className="font-headline text-5xl md:text-6xl font-extrabold mb-2 editorial-spacing"
+              className="font-headline text-4xl md:text-5xl font-extrabold mb-3 editorial-spacing leading-[1.05]"
               style={{
                 color: "var(--heading)",
                 fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",

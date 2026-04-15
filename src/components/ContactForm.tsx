@@ -18,8 +18,8 @@ export default function ContactForm() {
   // Format KZ/RU mobile: "+7 7XX XXX XX XX"
   function formatPhone(raw: string): string {
     let digits = raw.replace(/\D/g, "");
-    // Drop leading country code (7 or 8)
-    if (digits.startsWith("8") || digits.startsWith("7")) {
+    // Only strip leading country code when input has country code + full subscriber (11 digits)
+    if (digits.length >= 11 && (digits[0] === "7" || digits[0] === "8")) {
       digits = digits.slice(1);
     }
     digits = digits.slice(0, 10);
@@ -98,10 +98,10 @@ export default function ContactForm() {
   const glowInner = isDark ? "rgba(79,163,255," : "rgba(0,71,171,";
 
   return (
-    <section id="form" className="py-24">
-      <div className="max-w-7xl mx-auto px-8">
+    <section id="form" className="py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div
-          className="rounded-[3rem] p-12 md:p-24 relative overflow-hidden border"
+          className="rounded-2xl md:rounded-[3rem] p-6 sm:p-10 md:p-24 relative overflow-hidden border"
           style={panel}
         >
           {/* Decorative circles */}

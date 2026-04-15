@@ -78,12 +78,14 @@ export default function Contract() {
           ))}
         </div>
 
-        <p
-          className="mt-14 text-center text-xs tracking-wide animate-on-scroll"
-          style={{ color: "var(--text-muted)" }}
-        >
-          {t("legal")}
-        </p>
+        {t("legal") && (
+          <p
+            className="mt-14 text-center text-xs tracking-wide animate-on-scroll"
+            style={{ color: "var(--text-muted)" }}
+          >
+            {t("legal")}
+          </p>
+        )}
       </div>
     </section>
   );
