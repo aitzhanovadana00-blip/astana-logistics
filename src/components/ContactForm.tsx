@@ -13,23 +13,27 @@ export default function ContactForm() {
   const isDark = mounted && resolvedTheme === "dark";
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, boolean>>({});
-  const [phoneValue, setPhoneValue] = useState("");
+  // Store only raw subscriber digits (10 chars max), display is derived
+  const [phoneDigits, setPhoneDigits] = useState("");
 
-  // Format KZ/RU mobile: "+7 7XX XXX XX XX"
-  function formatPhone(raw: string): string {
+  function formatPhoneDigits(d: string): string {
+    if (d.length === 0) return "";
+    let out = "+7";
+    if (d.length >= 1) out += " " + d.slice(0, 3);
+    if (d.length >= 4) out += " " + d.slice(3, 6);
+    if (d.length >= 7) out += " " + d.slice(6, 8);
+    if (d.length >= 9) out += " " + d.slice(8, 10);
+    return out;
+  }
+
+  const phoneDisplay = formatPhoneDigits(phoneDigits);
+
+  function extractPhoneDigits(raw: string): string {
     let digits = raw.replace(/\D/g, "");
-    // Only strip leading country code when input has country code + full subscriber (11 digits)
     if (digits.length >= 11 && (digits[0] === "7" || digits[0] === "8")) {
       digits = digits.slice(1);
     }
-    digits = digits.slice(0, 10);
-    if (digits.length === 0) return "";
-    let out = "+7";
-    if (digits.length >= 1) out += " " + digits.slice(0, 3);
-    if (digits.length >= 4) out += " " + digits.slice(3, 6);
-    if (digits.length >= 7) out += " " + digits.slice(6, 8);
-    if (digits.length >= 9) out += " " + digits.slice(8, 10);
-    return out;
+    return digits.slice(0, 10);
   }
 
   function isValidPhone(value: string): boolean {
@@ -171,19 +175,32 @@ export default function ContactForm() {
                     <input
                       name="phone"
                       type="tel"
-                      inputMode="tel"
+                      inputMode="numeric"
                       autoComplete="tel"
                       placeholder={t("phonePlaceholder")}
-                      value={phoneValue}
-                      maxLength={16}
+                      value={phoneDisplay}
                       className="w-full px-4 py-3.5 rounded-xl border text-sm outline-none transition-all duration-200 focus:ring-2"
                       style={{
                         ...inputBase,
                         borderColor: errors.phone ? "#EF4444" : inputBorder,
                         boxShadow: errors.phone ? "0 0 0 1px #EF4444" : "none",
                       }}
+                      onKeyDown={(e) => {
+                        // Handle typing and deletion at digit level, independent of caret position
+                        if (e.key === "Backspace" || e.key === "Delete") {
+                          e.preventDefault();
+                          setPhoneDigits((prev) => prev.slice(0, -1));
+                          if (errors.phone) setErrors((prev) => ({ ...prev, phone: false }));
+                        } else if (/^\d$/.test(e.key)) {
+                          e.preventDefault();
+                          setPhoneDigits((prev) => (prev.length < 10 ? prev + e.key : prev));
+                          if (errors.phone) setErrors((prev) => ({ ...prev, phone: false }));
+                        }
+                        // Arrow keys, Tab, Home/End etc. pass through unchanged
+                      }}
                       onChange={(e) => {
-                        setPhoneValue(formatPhone(e.target.value));
+                        // Fallback for paste and programmatic updates
+                        setPhoneDigits(extractPhoneDigits(e.target.value));
                         if (errors.phone) setErrors((prev) => ({ ...prev, phone: false }));
                       }}
                     />

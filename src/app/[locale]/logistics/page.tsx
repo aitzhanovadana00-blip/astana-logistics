@@ -277,7 +277,7 @@ export default function LogisticsPage() {
                     className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
                     style={{
                       backgroundColor: "var(--surface-container-low, #F3F4F5)",
-                      color: "var(--primary)",
+                      color: "var(--accent-start)",
                     }}
                   >
                     {whyUsIcons[i]}

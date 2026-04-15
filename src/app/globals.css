@@ -72,12 +72,12 @@ html {
   --surface-container: #EDEEEF;
   --surface-container-low: #F3F4F5;
   --outline-variant: #C3C6D5;
-  --hero-title: #1f1f1f;
-  --hero-title-muted: rgba(31,31,31,0.55);
-  --hero-description: rgba(31,31,31,0.72);
-  --hero-cta-text: #1f1f1f;
-  --hero-cta-border: rgba(31,31,31,0.18);
-  --hero-cta-bg: rgba(255,255,255,0.55);
+  --hero-title: #0f1420;
+  --hero-title-muted: rgba(15,20,32,0.75);
+  --hero-description: #1f1f1f;
+  --hero-cta-text: #0f1420;
+  --hero-cta-border: rgba(15,20,32,0.2);
+  --hero-cta-bg: rgba(255,255,255,0.65);
   --logistics-hero-bg: linear-gradient(135deg, #EAF2FB 0%, #D8E8FA 45%, #F4F7FC 100%);
   --logistics-hero-glow-a: rgba(0,71,171,0.18);
   --logistics-hero-glow-b: rgba(62,146,204,0.18);

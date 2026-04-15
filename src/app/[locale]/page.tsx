@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import GeoStrip from "@/components/GeoStrip";
 import Services from "@/components/Services";
 import Advantages from "@/components/Advantages";
 import Contract from "@/components/Contract";
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <main className="pt-16">
         <Hero />
+        <GeoStrip />
         <Services />
         <Gallery />
         <Advantages />

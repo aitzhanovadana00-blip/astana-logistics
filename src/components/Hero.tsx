@@ -74,8 +74,8 @@ export default function Hero() {
           {t("description")}
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-wrap gap-4 justify-center">
+        {/* CTA */}
+        <div className="flex justify-center">
           <a
             href="#form"
             className="group flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all hover:shadow-2xl hover:-translate-y-0.5 active:scale-95"
@@ -101,17 +101,6 @@ export default function Hero() {
               <path d="M5 12h14" />
               <path d="m12 5 7 7-7 7" />
             </svg>
-          </a>
-          <a
-            href="#services"
-            className="px-8 py-4 rounded-xl font-bold transition-all active:scale-95 backdrop-blur-md hover:shadow-lg"
-            style={{
-              border: "1px solid var(--hero-cta-border)",
-              color: "var(--hero-cta-text)",
-              backgroundColor: "var(--hero-cta-bg)",
-            }}
-          >
-            {t("servicesBtn") || "Наши услуги"}
           </a>
         </div>
       </div>

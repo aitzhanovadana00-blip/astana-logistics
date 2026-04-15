@@ -66,7 +66,7 @@ export default function Services() {
                 className="w-12 h-12 flex items-center justify-center rounded-xl mb-6 transition-colors"
                 style={{
                   backgroundColor: "var(--surface-container, #EDEEEF)",
-                  color: "var(--primary)",
+                  color: "var(--accent-start)",
                 }}
               >
                 {service.icon}

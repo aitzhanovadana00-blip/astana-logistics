@@ -6,6 +6,7 @@ import Logo from "./Logo";
 
 export default function Header() {
   const t = useTranslations("nav");
+  const contacts = useTranslations("contacts");
   const locale = useLocale();
 
   const links = [
@@ -46,8 +47,8 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium transition-colors duration-300 hover:text-blue-900 dark:hover:text-blue-300"
-              style={{ color: "var(--text-muted, var(--text-secondary))" }}
+              className="text-sm font-semibold transition-opacity duration-300 hover:opacity-70"
+              style={{ color: "var(--text-primary)" }}
             >
               {link.label}
             </a>
@@ -57,6 +58,20 @@ export default function Header() {
         <div className="hidden lg:flex items-center gap-3">
           <LangSwitcher />
           <ThemeToggle />
+          <a
+            href="tel:+77753373130"
+            className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:-translate-y-0.5"
+            style={{
+              color: "var(--heading)",
+              border: "1px solid var(--outline-variant)",
+              backgroundColor: "color-mix(in srgb, var(--bg-card) 60%, transparent)",
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            {contacts("phone")}
+          </a>
           <a
             href={`/${locale}#form`}
             className="text-sm font-semibold px-6 py-2.5 rounded-lg text-white transition-all hover:-translate-y-0.5"

@@ -57,7 +57,7 @@ export default function Contract() {
                 className="w-12 h-12 flex items-center justify-center rounded-xl mb-6"
                 style={{
                   backgroundColor: "var(--surface-container-low, #F3F4F5)",
-                  color: "var(--primary)",
+                  color: "var(--accent-start)",
                 }}
               >
                 {icons[i]}
