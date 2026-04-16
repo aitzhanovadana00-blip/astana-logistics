@@ -127,14 +127,8 @@ export default function LogisticsPage() {
         <section className="py-32" style={{ background: "var(--bg-alt, var(--bg))" }}>
           <div className="max-w-3xl mx-auto px-6">
             <div className="text-center mb-16">
-              <p
-                className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4"
-                style={{ color: "var(--text-muted, var(--text-secondary))" }}
-              >
-                {t("forWhomEyebrow")}
-              </p>
               <h2
-                className="font-headline text-3xl md:text-4xl font-bold editorial-spacing leading-[1.1]"
+                className="font-headline text-2xl md:text-4xl font-bold editorial-spacing leading-[1.1]"
                 style={{
                   color: "var(--heading)",
                   fontFamily: headlineFont,
@@ -179,14 +173,8 @@ export default function LogisticsPage() {
         <section className="py-32">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
-              <p
-                className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4"
-                style={{ color: "var(--text-muted, var(--text-secondary))" }}
-              >
-                {t("whatWeDoEyebrow")}
-              </p>
               <h2
-                className="font-headline text-3xl md:text-5xl font-bold editorial-spacing"
+                className="font-headline text-2xl md:text-5xl font-bold editorial-spacing"
                 style={{
                   color: "var(--heading)",
                   fontFamily: headlineFont,
@@ -245,14 +233,8 @@ export default function LogisticsPage() {
         <section className="py-32" style={{ background: "var(--bg-alt, var(--bg))" }}>
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-20">
-              <p
-                className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4"
-                style={{ color: "var(--text-muted, var(--text-secondary))" }}
-              >
-                {t("whyUsEyebrow")}
-              </p>
               <h2
-                className="font-headline text-3xl md:text-5xl font-bold editorial-spacing"
+                className="font-headline text-2xl md:text-5xl font-bold editorial-spacing"
                 style={{
                   color: "var(--heading)",
                   fontFamily: headlineFont,
