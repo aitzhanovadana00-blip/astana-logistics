@@ -42,7 +42,7 @@ export default function Hero() {
         <h1
           className="font-headline editorial-spacing leading-[1.02] mb-4"
           style={{
-            fontSize: "clamp(2rem, 4.8vw, 3.75rem)",
+            fontSize: "clamp(1.75rem, 4.8vw, 3.75rem)",
             fontWeight: 800,
             color: "var(--hero-title)",
             fontFamily:

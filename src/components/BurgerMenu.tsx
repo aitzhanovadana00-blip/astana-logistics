@@ -80,7 +80,7 @@ export default function BurgerMenu() {
             : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
         style={{
-          backgroundColor: "color-mix(in srgb, var(--bg) 95%, transparent)",
+          backgroundColor: "var(--bg)",
           borderColor: "var(--border-nav)",
           boxShadow: "0 12px 32px -4px rgba(0,0,0,0.25)",
         }}

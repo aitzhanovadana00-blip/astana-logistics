@@ -39,7 +39,7 @@ export default function Services() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-2xl">
             <h2
-              className="font-headline text-3xl md:text-5xl font-bold mb-6 editorial-spacing animate-on-scroll"
+              className="font-headline text-2xl md:text-5xl font-bold mb-6 editorial-spacing animate-on-scroll"
               style={{
                 color: "var(--heading)",
                 fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",

@@ -40,7 +40,7 @@ export default function Contacts() {
     <section id="contacts" className="py-32" style={{ background: "var(--bg)" }}>
       <div className="max-w-7xl mx-auto px-8">
         <h2
-          className="font-headline text-3xl md:text-4xl font-bold mb-16 text-center editorial-spacing animate-on-scroll"
+          className="font-headline text-2xl md:text-4xl font-bold mb-16 text-center editorial-spacing animate-on-scroll"
           style={{
             color: "var(--heading)",
             fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",

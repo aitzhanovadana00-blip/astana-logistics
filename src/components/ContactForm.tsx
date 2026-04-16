@@ -124,7 +124,7 @@ export default function ContactForm() {
 
           <div className="relative z-10 max-w-2xl mx-auto">
             <h2
-              className="font-headline text-3xl md:text-5xl font-extrabold mb-8 text-center editorial-spacing"
+              className="font-headline text-2xl md:text-5xl font-extrabold mb-8 text-center editorial-spacing"
               style={{
                 color: headingColor,
                 fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
