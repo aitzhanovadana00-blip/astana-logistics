@@ -7,9 +7,9 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[92vh] overflow-hidden flex items-center justify-center pt-24 pb-24 bg-white dark:bg-[#07101F]">
-      {/* Radial glow background — adapted from background-components */}
+      {/* Radial glow background — animated pulse */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none animate-glow-pulse"
         style={{
           backgroundImage:
             "radial-gradient(circle at center, var(--hero-glow-color), transparent)",
