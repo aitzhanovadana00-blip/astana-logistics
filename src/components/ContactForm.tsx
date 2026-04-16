@@ -152,7 +152,7 @@ export default function ContactForm() {
                 <fieldset className="flex flex-col gap-4">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-medium px-1" style={{ color: labelColor }}>
-                      {t("name")}
+                      {t("name")} <span style={{ color: "#EF4444" }}>*</span>
                     </label>
                     <input
                       name="name"
@@ -170,7 +170,7 @@ export default function ContactForm() {
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-medium px-1" style={{ color: labelColor }}>
-                      {t("phone")}
+                      {t("phone")} <span style={{ color: "#EF4444" }}>*</span>
                     </label>
                     <input
                       name="phone"
