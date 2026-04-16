@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
 const photos = [
-  { src: "/team-trucks.jpg", alt: "team-trucks" },
+  { src: "/team-group.jpg", alt: "team-trucks" },
   { src: "/fleet.jpg", alt: "fleet" },
   { src: "/worker-loading.jpg", alt: "worker-loading" },
   { src: "/warehouse.jpg", alt: "warehouse" },

@@ -7,7 +7,6 @@ import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import Contacts from "@/components/Contacts";
 import Gallery from "@/components/Gallery";
-import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
         <Gallery />
         <Advantages />
         <Contract />
-        <Stats />
         <ContactForm />
         <FAQ />
         <Contacts />
