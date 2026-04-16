@@ -81,7 +81,7 @@ html {
   --logistics-hero-bg: linear-gradient(135deg, #EAF2FB 0%, #D8E8FA 45%, #F4F7FC 100%);
   --logistics-hero-glow-a: rgba(0,71,171,0.18);
   --logistics-hero-glow-b: rgba(62,146,204,0.18);
-  --hero-glow-color: rgba(0,71,171,0.35);
+  --hero-glow-color: rgba(80,120,255,0.7);
 }
 
 .dark {
@@ -112,7 +112,7 @@ html {
   --logistics-hero-bg: linear-gradient(135deg, #07101F 0%, #0F1E36 50%, #0B1A33 100%);
   --logistics-hero-glow-a: rgba(0,71,171,0.35);
   --logistics-hero-glow-b: rgba(79,163,255,0.25);
-  --hero-glow-color: rgba(79,163,255,0.45);
+  --hero-glow-color: rgba(80,120,255,0.6);
   --surface-container: #12253F;
   --surface-container-low: #0B1727;
   --outline-variant: rgba(0,71,171,0.24);

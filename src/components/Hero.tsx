@@ -12,7 +12,7 @@ export default function Hero() {
         className="absolute inset-0 z-0 pointer-events-none animate-glow-pulse"
         style={{
           backgroundImage:
-            "radial-gradient(circle at center, var(--hero-glow-color), transparent)",
+            "radial-gradient(ellipse 70% 70% at 50% 50%, var(--hero-glow-color) 0%, transparent 100%)",
         }}
       />
 
