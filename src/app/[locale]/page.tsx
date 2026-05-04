@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="pt-16">
+      <main className="pt-16 page-fade-in">
         <Hero />
         <Services />
         <Gallery />

@@ -32,7 +32,7 @@ export default function LogisticsPage() {
   return (
     <>
       <Header />
-      <main className="pt-16">
+      <main className="pt-16 page-fade-in">
         {/* ─────────── HERO ─────────── */}
         <section className="relative min-h-[72vh] overflow-hidden flex items-center justify-center pt-20 pb-20">
           {/* Static gradient background */}
@@ -63,7 +63,7 @@ export default function LogisticsPage() {
           <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center">
             {/* Eyebrow badge */}
             <div
-              className="inline-flex items-center gap-2 py-1.5 pl-2 pr-4 rounded-full text-[10px] font-bold uppercase tracking-[0.25em] mb-10"
+              className="animate-hero inline-flex items-center gap-2 py-1.5 pl-2 pr-4 rounded-full text-[10px] font-bold uppercase tracking-[0.25em] mb-10"
               style={{
                 backgroundColor: "var(--bg-card)",
                 color: "var(--heading)",
@@ -85,7 +85,7 @@ export default function LogisticsPage() {
 
             {/* Headline */}
             <h1
-              className="font-headline editorial-spacing leading-[1.02] mb-6"
+              className="animate-hero font-headline editorial-spacing leading-[1.02] mb-6"
               style={{
                 fontSize: "clamp(2rem, 4.8vw, 3.75rem)",
                 fontWeight: 800,
@@ -98,7 +98,7 @@ export default function LogisticsPage() {
 
             {/* Description */}
             <p
-              className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+              className="animate-hero-delay-1 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
               style={{ color: "var(--hero-description)" }}
             >
               {t("heroDescription")}
@@ -107,7 +107,7 @@ export default function LogisticsPage() {
             {/* CTA */}
             <a
               href="#form"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all hover:shadow-2xl hover:-translate-y-0.5 active:scale-95"
+              className="animate-hero-delay-2 group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all hover:shadow-2xl hover:-translate-y-0.5 active:scale-95"
               style={{
                 background:
                   "linear-gradient(135deg, var(--accent-start), var(--accent-end))",
@@ -126,7 +126,7 @@ export default function LogisticsPage() {
         {/* ─────────── FOR WHOM — centered single column ─────────── */}
         <section className="py-32" style={{ background: "var(--bg-alt, var(--bg))" }}>
           <div className="max-w-3xl mx-auto px-6">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-on-scroll">
               <h2
                 className="font-headline text-2xl md:text-4xl font-bold editorial-spacing leading-[1.1]"
                 style={{
@@ -145,7 +145,7 @@ export default function LogisticsPage() {
               {forWhom.map((item, i) => (
                 <li
                   key={i}
-                  className="group flex items-start gap-6 py-8 border-b transition-all"
+                  className={`animate-on-scroll-delay-${i % 3} group flex items-start gap-6 py-8 border-b transition-all`}
                   style={{ borderColor: "var(--outline-variant)" }}
                 >
                   <span
@@ -172,7 +172,7 @@ export default function LogisticsPage() {
         {/* ─────────── WHAT WE DO — 4-step process flow ─────────── */}
         <section className="py-32">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-on-scroll">
               <h2
                 className="font-headline text-2xl md:text-5xl font-bold editorial-spacing"
                 style={{
@@ -188,7 +188,7 @@ export default function LogisticsPage() {
               {whatWeDo.map((item, i) => (
                 <div
                   key={i}
-                  className="relative rounded-2xl p-7 border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  className={`animate-on-scroll-delay-${i % 3} relative rounded-2xl p-7 border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
                   style={{
                     backgroundColor: "var(--bg-card)",
                     borderColor: "var(--border-card)",
@@ -232,7 +232,7 @@ export default function LogisticsPage() {
         {/* ─────────── WHY US — three icon cards ─────────── */}
         <section className="py-32" style={{ background: "var(--bg-alt, var(--bg))" }}>
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-20">
+            <div className="text-center mb-20 animate-on-scroll">
               <h2
                 className="font-headline text-2xl md:text-5xl font-bold editorial-spacing"
                 style={{
@@ -248,7 +248,7 @@ export default function LogisticsPage() {
               {whyUs.map((item, i) => (
                 <div
                   key={i}
-                  className="group relative flex flex-col gap-6 p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className={`animate-on-scroll-delay-${i % 3} group relative flex flex-col gap-6 p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
                   style={{
                     backgroundColor: "var(--bg-card)",
                     borderColor: "var(--border-card)",
@@ -311,7 +311,7 @@ export default function LogisticsPage() {
             }}
           />
 
-          <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+          <div className="relative z-10 max-w-3xl mx-auto px-6 text-center animate-on-scroll">
             <h2
               className="font-headline text-3xl md:text-5xl font-extrabold mb-5 editorial-spacing leading-tight"
               style={{

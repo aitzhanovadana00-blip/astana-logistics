@@ -26,7 +26,7 @@ export default function Gallery() {
         </h2>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
           {/* Large card - first photo */}
           <div className="md:col-span-8 relative rounded-3xl overflow-hidden group animate-on-scroll" style={{ minHeight: "360px" }}>
             <img
@@ -38,7 +38,7 @@ export default function Gallery() {
           </div>
 
           {/* Right column - two stacked */}
-          <div className="md:col-span-4 flex flex-col gap-6">
+          <div className="md:col-span-4 flex flex-col gap-2">
             <div className="relative rounded-3xl overflow-hidden group flex-1 animate-on-scroll" style={{ minHeight: "170px" }}>
               <img
                 src={photos[1].src}
