@@ -22,55 +22,65 @@ export default function FAQ() {
         </h2>
 
         <div className="flex flex-col gap-3">
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border overflow-hidden transition-all duration-300 animate-on-scroll"
-              style={{
-                backgroundColor: "var(--bg-card)",
-                borderColor: openIndex === i ? "var(--primary)" : "var(--border-card)",
-                boxShadow: openIndex === i ? "var(--shadow-card-hover)" : "none",
-              }}
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left transition-colors duration-200"
-              >
-                <span
-                  className="text-sm font-semibold pr-4"
-                  style={{ color: openIndex === i ? "var(--heading)" : "var(--text-primary)" }}
-                >
-                  {item.question}
-                </span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={`shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}
-                  style={{ color: openIndex === i ? "var(--primary)" : "var(--text-muted, var(--text-secondary))" }}
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </button>
-
+          {items.map((item, i) => {
+            const isOpen = openIndex === i;
+            return (
               <div
-                className={`overflow-hidden transition-all duration-300 ${openIndex === i ? "max-h-96 pb-5 px-6" : "max-h-0"}`}
+                key={i}
+                className="rounded-2xl border overflow-hidden transition-[border-color,box-shadow] duration-300 animate-on-scroll"
+                style={{
+                  backgroundColor: "var(--bg-card)",
+                  borderColor: isOpen ? "var(--primary)" : "var(--border-card)",
+                  boxShadow: isOpen ? "var(--shadow-card-hover)" : "none",
+                }}
               >
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "var(--text-secondary)" }}
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between px-6 py-5 text-left transition-colors duration-200"
+                  aria-expanded={isOpen}
                 >
-                  {item.answer}
-                </p>
+                  <span
+                    className="text-sm font-semibold pr-4 transition-colors duration-200"
+                    style={{ color: isOpen ? "var(--heading)" : "var(--text-primary)" }}
+                  >
+                    {item.question}
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    style={{ color: isOpen ? "var(--primary)" : "var(--text-muted, var(--text-secondary))" }}
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+
+                {/* Smooth height transition via grid-template-rows trick */}
+                <div
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="min-h-0 overflow-hidden">
+                    <p
+                      className="text-sm leading-relaxed px-6 pb-5"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN!;
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID!;
+// Accept either TELEGRAM_CHAT_IDS (comma-separated) or fall back to single TELEGRAM_CHAT_ID
+const TELEGRAM_CHAT_IDS = (
+  process.env.TELEGRAM_CHAT_IDS ?? process.env.TELEGRAM_CHAT_ID ?? ""
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 
 const ipRequests = new Map<string, { count: number; resetAt: number }>();
 
@@ -66,20 +72,42 @@ export async function POST(request: NextRequest) {
     .filter(Boolean)
     .join("\n");
 
-  const res = await fetch(
-    `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text: message,
-        parse_mode: "Markdown",
-      }),
-    }
+  if (TELEGRAM_CHAT_IDS.length === 0) {
+    return NextResponse.json({ error: "No chat IDs configured" }, { status: 500 });
+  }
+
+  // Send to all chats in parallel; succeed if at least one delivered
+  const results = await Promise.allSettled(
+    TELEGRAM_CHAT_IDS.map((chatId) =>
+      fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: "Markdown",
+        }),
+      }).then(async (r) => {
+        if (!r.ok) {
+          const errText = await r.text().catch(() => "");
+          throw new Error(`chat ${chatId}: ${r.status} ${errText}`);
+        }
+        return chatId;
+      })
+    )
   );
 
-  if (!res.ok) {
+  const failed = results.filter((r) => r.status === "rejected");
+  if (failed.length > 0) {
+    console.error(
+      "Telegram delivery failures:",
+      failed.map((r) => (r as PromiseRejectedResult).reason?.message ?? r)
+    );
+  }
+
+  // Return success if at least one delivery succeeded
+  const anyOk = results.some((r) => r.status === "fulfilled");
+  if (!anyOk) {
     return NextResponse.json({ error: "Failed to send" }, { status: 500 });
   }
 
