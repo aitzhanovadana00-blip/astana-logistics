@@ -35,10 +35,6 @@ export default function Gallery() {
               className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-8 left-8 z-10">
-              <p className="text-white font-bold text-xl" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}>{t(photos[0].alt)}</p>
-            </div>
           </div>
 
           {/* Right column - two stacked */}
@@ -50,8 +46,6 @@ export default function Gallery() {
                 className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <p className="absolute bottom-4 left-4 text-white font-bold text-sm" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}>{t(photos[1].alt)}</p>
             </div>
             <div className="relative rounded-3xl overflow-hidden group flex-1 animate-on-scroll" style={{ minHeight: "170px" }}>
               <img
@@ -60,8 +54,6 @@ export default function Gallery() {
                 className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <p className="absolute bottom-4 left-4 text-white font-bold text-sm" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}>{t(photos[2].alt)}</p>
             </div>
           </div>
 
@@ -78,8 +70,6 @@ export default function Gallery() {
                 className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <p className="absolute bottom-4 left-4 text-white font-bold text-sm" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}>{t(photo.alt)}</p>
             </div>
           ))}
         </div>

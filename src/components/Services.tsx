@@ -36,28 +36,29 @@ export default function Services() {
   return (
     <section id="services" className="py-32" style={{ background: "var(--bg-alt, var(--bg))" }}>
       <div className="max-w-7xl mx-auto px-8">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-          <div className="max-w-2xl">
-            <h2
-              className="font-headline text-2xl md:text-5xl font-bold mb-6 editorial-spacing animate-on-scroll"
-              style={{
-                color: "var(--heading)",
-                fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
-              }}
-            >
-              {t("heading")}
-            </h2>
-            <p className="text-lg animate-on-scroll" style={{ color: "var(--text-secondary)" }}>
-              {t("subheading") || ""}
-            </p>
-          </div>
+        <div className="text-center mb-20">
+          <h2
+            className="font-headline text-2xl md:text-5xl font-bold mb-6 editorial-spacing animate-on-scroll"
+            style={{
+              color: "var(--heading)",
+              fontFamily: "var(--font-headline), 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
+            }}
+          >
+            {t("heading")}
+          </h2>
+          <p
+            className="text-lg max-w-2xl mx-auto animate-on-scroll"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            {t("subheading") || ""}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <div
               key={service.key}
-              className={`group card-hover p-8 rounded-2xl transition-all duration-300 border border-transparent hover:border-[var(--outline-variant)] animate-on-scroll-delay-${i}`}
+              className={`group card-hover p-8 rounded-2xl transition-all duration-300 border border-transparent hover:border-[var(--outline-variant)] flex flex-col items-center text-center animate-on-scroll-delay-${i}`}
               style={{
                 backgroundColor: "var(--bg-card)",
               }}
