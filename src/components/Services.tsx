@@ -102,6 +102,47 @@ export default function Services() {
             </div>
           ))}
         </div>
+
+        {/* Featured: Эвакуатор — full-width card with photo */}
+        <div
+          className="mt-6 rounded-2xl overflow-hidden border border-transparent hover:border-[var(--outline-variant)] transition-all duration-300 grid grid-cols-1 md:grid-cols-2 animate-on-scroll"
+          style={{ backgroundColor: "var(--bg-card)" }}
+        >
+          <div
+            className="relative h-64 md:h-auto md:min-h-[280px] bg-cover bg-center"
+            style={{ backgroundImage: "url('/tow-truck.jpeg')" }}
+            role="img"
+            aria-label={t("evacuator.title")}
+          />
+          <div className="p-8 md:p-12 flex flex-col justify-center">
+            <span
+              className="inline-flex items-center self-start gap-2 px-3 py-1 mb-5 rounded-full text-[10px] font-bold uppercase tracking-[0.18em]"
+              style={{
+                backgroundColor: "var(--surface-container-low, #F3F4F5)",
+                color: "var(--accent-start)",
+                border: "1px solid var(--outline-variant)",
+              }}
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{ backgroundColor: "var(--accent-start)" }}
+              />
+              {t("evacuator.tag")}
+            </span>
+            <h3
+              className="text-2xl md:text-3xl font-bold mb-4 editorial-spacing"
+              style={{ color: "var(--heading)" }}
+            >
+              {t("evacuator.title")}
+            </h3>
+            <p
+              className="text-base leading-relaxed"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              {t("evacuator.description")}
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
